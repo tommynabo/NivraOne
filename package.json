@@ -19,7 +19,7 @@
     "@radix-ui/react-slot": "1.0.2",
     "class-variance-authority": "0.7.0",
     "canvas-confetti": "1.9.2",
-    "@number-flow/react": "0.0.4"
+    "@number-flow/react": "^0.5.10"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
