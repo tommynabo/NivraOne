@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tomás Navarro | Ingeniería de Sistemas IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#00598A',
+              'primary-dark': '#003F61',
+              'soft-gray': '#F3F4F6',
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'spin-slow': 'spin 15s linear infinite',
+              'float': 'float 20s ease-in-out infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translate(0, 0)' },
+                '25%': { transform: 'translate(10px, -15px)' },
+                '50%': { transform: 'translate(-5px, 10px)' },
+                '75%': { transform: 'translate(-15px, -5px)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 201 100% 27%; /* #00598A converted roughly to HSL */
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 201 100% 27%;
+        --radius: 0.5rem;
+      }
+ 
+      /* Particles Background */
+      .particles-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: #00598A;
+        opacity: 0.08;
+        filter: blur(2px);
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .p1 { width: 80px; height: 80px; top: 10%; left: 10%; animation-duration: 25s; }
+      .p2 { width: 40px; height: 40px; top: 20%; left: 80%; animation-duration: 20s; animation-delay: -5s; }
+      .p3 { width: 120px; height: 120px; top: 80%; left: 15%; animation-duration: 30s; animation-delay: -10s; opacity: 0.05; }
+      .p4 { width: 60px; height: 60px; top: 70%; left: 70%; animation-duration: 22s; animation-delay: -2s; }
+      .p5 { width: 30px; height: 30px; top: 40%; left: 50%; animation-duration: 18s; animation-delay: -8s; }
+
+      
+      /* Card Glow Effect */
+      .card-glow::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        border-radius: 1rem;
+        background: linear-gradient(45deg, #00598A, #00c6ff, #00598A);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .card-glow:hover::before {
+        opacity: 1;
+      }
+
+      /* Gradient Button Styles */
+      .gradient-button {
+        background: linear-gradient(135deg, #00598A 0%, #003F61 100%);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 89, 138, 0.3);
+      }
+      .gradient-button::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: linear-gradient(135deg, #00c6ff 0%, #00598A 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 0;
+      }
+      .gradient-button:hover::before {
+        opacity: 1;
+      }
+      .gradient-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 89, 138, 0.4);
+      }
+      .gradient-button-variant {
+         background: transparent;
+         border: 2px solid #00598A;
+         color: #00598A;
+      }
+      .gradient-button-variant:hover {
+         background: rgba(0, 89, 138, 0.05);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/": "https://esm.sh/react@18.3.1/",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+    "lucide-react": "https://esm.sh/lucide-react@0.344.0?external=react",
+    "framer-motion": "https://esm.sh/framer-motion@11.0.8?external=react,react-dom",
+    "three": "https://esm.sh/three@0.160.0",
+    "clsx": "https://esm.sh/clsx@2.1.0",
+    "tailwind-merge": "https://esm.sh/tailwind-merge@2.2.1",
+    "@radix-ui/react-slot": "https://esm.sh/@radix-ui/react-slot@1.0.2?external=react",
+    "class-variance-authority": "https://esm.sh/class-variance-authority@0.7.0",
+    "canvas-confetti": "https://esm.sh/canvas-confetti@1.9.2",
+    "@number-flow/react": "https://esm.sh/@number-flow/react@0.0.4?external=react,react-dom"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-white relative">
+    <div class="particles-container">
+        <div class="particle p1"></div>
+        <div class="particle p2"></div>
+        <div class="particle p3"></div>
+        <div class="particle p4"></div>
+        <div class="particle p5"></div>
+    </div>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
