@@ -113,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
               </div>{' '}
-              <span className="block mt-2">
+              <span className="block mt-2 whitespace-nowrap text-2xl md:text-4xl lg:text-5xl">
                 tu operativa con Ingeniería de IA
               </span>
             </h1>

@@ -42,8 +42,8 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
     <section id="sistemas" className="container py-24 mx-auto px-6">
       <div className="text-center space-y-4 mb-16 max-w-3xl mx-auto">
         <h2 className="text-4xl font-bold tracking-tight sm:text-5xl text-slate-900">
-          Sistemas "Llave en Mano". <br />
-          <span className="text-primary">Instalados en tu negocio.</span>
+          Ingeniería lista para usar. <br />
+          <span className="text-primary">Sistemas Plug & Play</span>
         </h2>
         <p className="text-slate-600 text-lg whitespace-pre-line">
           No vendo horas de consultoría sueltas. Vendo activos digitales que sistematizan problemas específicos de raíz.
