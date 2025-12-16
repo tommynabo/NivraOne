@@ -9,7 +9,7 @@ export const Authority: React.FC = () => {
           <div className="lg:w-1/2 order-2 lg:order-1">
             <div className="relative rounded-xl overflow-hidden shadow-2xl border border-gray-200 bg-white p-1">
               <img
-                src="/logic-diagram-final.png"
+                src="/authority-new.png"
                 alt="Diagrama de Lógica de Negocio"
                 className="w-full h-auto rounded-lg object-cover"
               />
