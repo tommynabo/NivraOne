@@ -1,124 +1,107 @@
 import React from 'react';
 import { GradientButton } from '../components/GradientButton';
-import { CheckCircle2, ShieldCheck, Microscope, FileText, Video, Workflow, Terminal } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, Microscope, FileText, Video, Workflow, Terminal, ArrowRight } from 'lucide-react';
 
 export const AuditPage: React.FC = () => {
     return (
-        <div className="pt-32 pb-24 bg-white min-h-screen relative overflow-hidden">
+        <div className="pt-32 pb-24 bg-slate-50 min-h-screen">
+            <div className="container mx-auto px-6 md:px-12 max-w-4xl">
 
-            <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
-
-                {/* Header */}
-                <div className="text-center mb-16 max-w-3xl mx-auto">
-                    <div className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-widest mb-4 animate-pulse">
-                        Sesión de Arquitectura
-                    </div>
+                {/* Header Simple */}
+                <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
                         De la Teoría a <span className="text-primary">Montar el Sistema</span>
                     </h1>
-                    <p className="text-xl text-slate-600 leading-relaxed">
+                    <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
                         Esta no es una llamada de ventas. Es una sesión de trabajo intensiva para diseñar, en vivo, la infraestructura IA de tu negocio.
                     </p>
                 </div>
 
-                {/* What we get - Cards for Scannability */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-                    <div className="bg-white/80 backdrop-blur p-6 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-primary mb-4">
-                            <Microscope size={24} />
-                        </div>
-                        <h3 className="text-lg font-bold text-slate-900 mb-2">Disección Operativa</h3>
-                        <p className="text-slate-600 text-sm">Analizaré tus procesos actuales para encontrar exactamente dónde pierdes tiempo y dinero.</p>
-                    </div>
+                {/* Main Offer Card */}
+                <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200 mb-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2">
 
-                    <div className="bg-white/80 backdrop-blur p-6 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
-                        <div className="absolute top-0 right-0 w-16 h-16 bg-primary/5 rounded-bl-full -mr-4 -mt-4"></div>
-                        <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-primary mb-4">
-                            <Workflow size={24} />
-                        </div>
-                        <h3 className="text-lg font-bold text-slate-900 mb-2">Arquitectura en Vivo</h3>
-                        <p className="text-slate-600 text-sm">Diseñaremos en pizarra virtual el diagrama de flujo exacto que tu negocio necesita.</p>
-                    </div>
-
-                    <div className="bg-white/80 backdrop-blur p-6 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-primary mb-4">
-                            <Terminal size={24} />
-                        </div>
-                        <h3 className="text-lg font-bold text-slate-900 mb-2">Plan de Acción</h3>
-                        <p className="text-slate-600 text-sm">Stack tecnológico definido (n8n, OpenAI, Claude) y cronograma de implementación.</p>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
-                    {/* Deliverables List */}
-                    <div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                            Tus Entregables
-                        </h3>
-                        <div className="bg-soft-gray rounded-2xl p-8 border border-gray-200">
+                        {/* Left: What you get */}
+                        <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-slate-100">
+                            <h3 className="text-2xl font-bold text-slate-900 mb-6">En 60 minutos:</h3>
                             <ul className="space-y-4">
-                                <li className="flex items-center gap-4 text-slate-800 font-medium">
-                                    <div className="bg-white p-2 rounded-full shadow-sm text-primary"><FileText size={20} /></div>
-                                    El Mapa de Arquitectura (PDF)
+                                <li className="flex items-start gap-4">
+                                    <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Microscope size={20} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-slate-900">Disección Operativa</h4>
+                                        <p className="text-sm text-slate-600">Encuentro dónde pierdes dinero.</p>
+                                    </div>
                                 </li>
-                                <li className="flex items-center gap-4 text-slate-800 font-medium">
-                                    <div className="bg-white p-2 rounded-full shadow-sm text-primary"><Video size={20} /></div>
-                                    Grabación de la Estrategia
+                                <li className="flex items-start gap-4">
+                                    <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Workflow size={20} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-slate-900">Arquitectura en Vivo</h4>
+                                        <p className="text-sm text-slate-600">Diseño el diagrama de flujo exacto.</p>
+                                    </div>
                                 </li>
-                                <li className="flex items-center gap-4 text-slate-800 font-medium">
-                                    <div className="bg-white p-2 rounded-full shadow-sm text-primary"><CheckCircle2 size={20} /></div>
-                                    Propuesta de Implementación
+                                <li className="flex items-start gap-4">
+                                    <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Terminal size={20} /></div>
+                                    <div>
+                                        <h4 className="font-bold text-slate-900">Plan de Acción</h4>
+                                        <p className="text-sm text-slate-600">Stack tecnológico y cronograma.</p>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
-                    </div>
 
-                    {/* The BLUE CARD - Guarantee */}
-                    <div className="relative group">
-                        <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
-                        <div className="relative bg-primary text-white p-8 md:p-10 rounded-2xl shadow-2xl overflow-hidden">
-                            {/* Background pattern */}
-                            <div className="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
-                                <ShieldCheck size={200} />
+                        {/* Right: The Guarantee & Price */}
+                        <div className="p-8 md:p-12 bg-slate-900 text-white flex flex-col justify-between">
+                            <div>
+                                <div className="flex items-center gap-2 text-blue-300 font-bold mb-4 uppercase tracking-wider text-sm">
+                                    <ShieldCheck size={18} />
+                                    Garantía Riesgo Cero
+                                </div>
+                                <h3 className="text-3xl font-bold mb-6 text-white">
+                                    Si no te sirve, <br />
+                                    <span className="text-blue-400">te devuelvo el 100%.</span>
+                                </h3>
+                                <p className="text-slate-400 mb-8 leading-relaxed">
+                                    Si al terminar la sesión no tienes claridad absoluta, te reembolso el dinero. Sin preguntas.
+                                </p>
+
+                                <div className="p-4 bg-white/10 rounded-xl mb-8 border border-white/10">
+                                    <p className="font-medium text-sm flex items-center gap-2">
+                                        <CheckCircle2 size={16} className="text-green-400" />
+                                        100% Deducible si contratas un Sistema
+                                    </p>
+                                </div>
                             </div>
 
-                            <h4 className="text-2xl font-bold flex items-center gap-3 mb-6 relative z-10">
-                                <ShieldCheck size={32} className="text-blue-200" />
-                                Garantía "Riesgo Cero"
-                            </h4>
-
-                            <div className="space-y-4 relative z-10 text-blue-50">
-                                <p className="leading-relaxed font-medium">
-                                    Entiendo el escepticismo con la consultoría. Por eso mi promesa es absoluta:
-                                </p>
-                                <ul className="space-y-3 pl-2">
-                                    <li className="flex items-start gap-2">
-                                        <CheckCircle2 size={18} className="mt-1 flex-shrink-0 text-blue-200" />
-                                        <span><strong>100% Reembolsable:</strong> Si al terminar no sientes claridad total, te devuelvo el dinero. Sin preguntas.</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <CheckCircle2 size={18} className="mt-1 flex-shrink-0 text-blue-200" />
-                                        <span><strong>Deducible:</strong> Si decides implementar un sistema, los <strong>197€</strong> de esta auditoría se descuentan 100% del precio final.</span>
-                                    </li>
-                                </ul>
+                            <div>
+                                <div className="flex items-center justify-between mb-4">
+                                    <span className="text-slate-400">Inversión única</span>
+                                    <span className="text-3xl font-bold">197€</span>
+                                </div>
+                                <a href="https://cal.com/tomanavarro/auditoria" target="_blank" rel="noopener noreferrer" className='block'>
+                                    <GradientButton className="w-full justify-center py-4 text-lg font-bold">
+                                        Reservar Auditoría <ArrowRight className="ml-2" size={20} />
+                                    </GradientButton>
+                                </a>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
-                <div className="text-center border-t border-gray-100 pt-16">
-                    <p className="text-xl text-slate-600 mb-6 max-w-2xl mx-auto">
-                        Reserva tu hora abajo y pasemos de la teoría a <span className="text-slate-900 font-bold underline decoration-primary decoration-4 underline-offset-4">montar el sistema</span>.
-                    </p>
-                    <div className="mb-4">
-                        <span className="text-2xl font-bold text-slate-900">197€</span>
-                        <span className="text-slate-500 text-sm ml-2 font-medium uppercase tracking-wide">Sesión intensiva</span>
+                {/* Deliverables Simple */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                        <FileText className="w-8 h-8 mx-auto text-primary mb-3" />
+                        <h4 className="font-bold text-slate-900">Mapa de Arquitectura (PDF)</h4>
                     </div>
-                    <a href="https://cal.com/tomanavarro/auditoria" target="_blank" rel="noopener noreferrer">
-                        <GradientButton className="text-xl px-16 py-6 shadow-blue-500/30 hover:shadow-blue-500/50 shadow-2xl hover:scale-105 transition-all duration-300 rounded-xl">
-                            Reservar Auditoría
-                        </GradientButton>
-                    </a>
+                    <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                        <Video className="w-8 h-8 mx-auto text-primary mb-3" />
+                        <h4 className="font-bold text-slate-900">Grabación de la Estrategia</h4>
+                    </div>
+                    <div className="bg-white p-6 rounded-2xl border border-slate-200">
+                        <CheckCircle2 className="w-8 h-8 mx-auto text-primary mb-3" />
+                        <h4 className="font-bold text-slate-900">Propuesta de Implementación</h4>
+                    </div>
                 </div>
 
             </div>

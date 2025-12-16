@@ -18,15 +18,15 @@ export const Authority: React.FC = () => {
 
           <div className="lg:w-1/2 order-1 lg:order-2">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">
-              No es magia, es Lógica. <br />
-              <span className="text-primary">Así se ve tu negocio cuando funciona solo.</span>
+              Soy Tomás. No soy un don nadie. <br />
+              <span className="text-primary">Soy un arquitecto de sistemas.</span>
             </h2>
             <div className="prose text-slate-600 space-y-4 text-lg">
               <p>
-                Cuando ves un flujo bien diseñado, todo cobra sentido. Cada cuadrado es una tarea que tú ya no haces. Cada línea es un dato moviéndose a la velocidad de la luz.
+                Mi obsesión es simple: Si una tarea se repite más de 3 veces, debe morir (ser sistematizada).
               </p>
               <p>
-                Mi trabajo no es solo "conectar herramientas". Es <strong>Ingeniería de Procesos</strong>. Analizo dónde pierdes dinero y tiempo, diseño la lógica para solucionarlo, y luego construyo el sistema que lo ejecuta.
+                Ayudo a empresas, consutlores, coaches mentores y expertos a recuperar el activo más valioso que tienen y que no se reupera: <strong className="text-primary uppercase">EL TIEMPO</strong>
               </p>
               <p className="font-medium text-slate-900 pt-4 border-l-4 border-primary pl-4">
                 "Sistematizar un proceso ineficiente solo magnifica la ineficiencia. Primero simplificamos, luego sistematizamos."

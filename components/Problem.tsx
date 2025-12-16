@@ -40,7 +40,7 @@ const TIMELINE_DATA: TimelineItem[] = [
         id: 3,
         title: "Contenido Esporádico",
         date: "Sin Sistema",
-        content: "Tienes ideas brillantes pero no tienes tiempo para editar, formatear y publicar en todas las redes. Tu marca sufre y te vuelves irrelevante.",
+        content: "No tienes ideas brillantes, no tienes tiempo para editar, formatear y publicar en todas las redes. Tu marca sufre y te vuelves irrelevante.",
         status: "pending",
         energy: 40,
         icon: Video,
