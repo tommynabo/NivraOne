@@ -194,6 +194,13 @@ export default function VaporizeTextCycle({
           break;
         }
         case "vaporizing": {
+          // Play sound effect once when vaporizing starts
+          if (vaporizeProgressRef.current === 0) {
+             const audio = new Audio('/vaporize.mp3');
+             audio.volume = 0.5; // Reasonable volume
+             audio.play().catch(e => console.log("Audio play failed (interaction needed first):", e));
+          }
+
           // Calculate progress based on duration
           vaporizeProgressRef.current += deltaTime * 100 / (animationDurations.VAPORIZE_DURATION / 1000);
 

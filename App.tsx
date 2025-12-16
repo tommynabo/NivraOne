@@ -9,6 +9,8 @@ import { SystemsPage } from './pages/SystemsPage';
 import { ContactPage } from './pages/ContactPage';
 import { SystemDetailPage } from './pages/SystemDetailPage';
 import { AuditPage } from './pages/AuditPage';
+import { LegalNotice } from './pages/LegalNotice';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import VaporizeTextCycle, { Tag } from './components/VaporizeTextCycle';
 
 // Centralized Data
@@ -63,189 +65,192 @@ const SYSTEMS_DATA: SystemData[] = [
     }
 ];
 
-type Page = 'home' | 'systems' | 'contact' | 'system-detail' | 'audit';
+type Page = 'home' | 'systems' | 'contact' | 'system-detail' | 'audit' | 'legal' | 'privacy';
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [selectedSystemId, setSelectedSystemId] = useState<string | null>(null);
-  const [isMobile, setIsMobile] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState<Page>('home');
+    const [selectedSystemId, setSelectedSystemId] = useState<string | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+    const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    
-    // Create audio instance
-    const audio = new Audio("https://cdn.pixabay.com/audio/2022/03/10/audio_510344b58f.mp3");
-    audio.volume = 0.5;
-    audioRef.current = audio;
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
-    const playAudio = async () => {
-        try {
-            await audio.play();
-        } catch (err) {
-            // Autoplay blocked handling
-            const enableAudio = () => {
-                audio.play().catch(() => {});
-                document.removeEventListener('click', enableAudio);
-                document.removeEventListener('keydown', enableAudio);
-            };
-            document.addEventListener('click', enableAudio);
-            document.addEventListener('keydown', enableAudio);
+        // Create audio instance
+        const audio = new Audio("https://cdn.pixabay.com/audio/2022/03/10/audio_510344b58f.mp3");
+        audio.volume = 0.5;
+        audioRef.current = audio;
+
+        const playAudio = async () => {
+            try {
+                await audio.play();
+            } catch (err) {
+                // Autoplay blocked handling
+                const enableAudio = () => {
+                    audio.play().catch(() => { });
+                    document.removeEventListener('click', enableAudio);
+                    document.removeEventListener('keydown', enableAudio);
+                };
+                document.addEventListener('click', enableAudio);
+                document.addEventListener('keydown', enableAudio);
+            }
+        };
+
+        playAudio();
+
+        // Loader timer
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 3800);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(timer);
+            if (audioRef.current) {
+                audioRef.current.pause();
+            }
+        };
+    }, []);
+
+    const navigate = (page: string) => {
+        if (page === 'home' || page === 'systems' || page === 'contact' || page === 'audit' || page === 'legal' || page === 'privacy') {
+            setCurrentPage(page as Page);
         }
+        window.scrollTo(0, 0);
     };
 
-    playAudio();
-
-    // Loader timer
-    const timer = setTimeout(() => {
-        setLoading(false);
-    }, 3800); 
-
-    return () => {
-        window.removeEventListener('resize', handleResize);
-        clearTimeout(timer);
-        if (audioRef.current) {
-            audioRef.current.pause();
-        }
+    const handleViewSystem = (id: string) => {
+        setSelectedSystemId(id);
+        setCurrentPage('system-detail');
+        window.scrollTo(0, 0);
     };
-  }, []);
 
-  const navigate = (page: string) => {
-    if (page === 'home' || page === 'systems' || page === 'contact' || page === 'audit') {
-        setCurrentPage(page as Page);
+    const getSelectedSystem = () => SYSTEMS_DATA.find(s => s.id === selectedSystemId) || SYSTEMS_DATA[0];
+
+    if (loading) {
+        return (
+            <div className='bg-black h-screen w-screen flex flex-col justify-center items-center overflow-hidden px-4'>
+                {isMobile ? (
+                    <>
+                        {/* Mobile: Two lines animating simultaneously */}
+                        <div className="h-[60px] w-full flex justify-center items-end">
+                            <VaporizeTextCycle
+                                texts={["TOMAS"]}
+                                font={{
+                                    fontFamily: "Inter, sans-serif",
+                                    fontSize: "45px",
+                                    fontWeight: 800
+                                }}
+                                color="rgb(0, 89, 138)"
+                                spread={2}
+                                density={4}
+                                animation={{
+                                    vaporizeDuration: 1.5,
+                                    fadeInDuration: 0.5,
+                                    waitDuration: 5
+                                }}
+                                direction="left-to-right"
+                                alignment="center"
+                                tag={Tag.H1}
+                            />
+                        </div>
+                        <div className="h-[60px] w-full flex justify-center items-start">
+                            <VaporizeTextCycle
+                                texts={["NAVARRO"]}
+                                font={{
+                                    fontFamily: "Inter, sans-serif",
+                                    fontSize: "45px",
+                                    fontWeight: 800
+                                }}
+                                color="rgb(0, 89, 138)"
+                                spread={2}
+                                density={4}
+                                animation={{
+                                    vaporizeDuration: 1.5,
+                                    fadeInDuration: 0.5,
+                                    waitDuration: 5
+                                }}
+                                direction="left-to-right"
+                                alignment="center"
+                                tag={Tag.H1}
+                            />
+                        </div>
+                    </>
+                ) : (
+                    /* Desktop: Single line */
+                    <VaporizeTextCycle
+                        texts={["TOMAS NAVARRO"]}
+                        font={{
+                            fontFamily: "Inter, sans-serif",
+                            fontSize: "60px",
+                            fontWeight: 800
+                        }}
+                        color="rgb(0, 89, 138)"
+                        spread={2}
+                        density={4}
+                        animation={{
+                            vaporizeDuration: 1.5,
+                            fadeInDuration: 0.5,
+                            waitDuration: 0.8
+                        }}
+                        direction="left-to-right"
+                        alignment="center"
+                        tag={Tag.H1}
+                    />
+                )}
+            </div>
+        )
     }
-    window.scrollTo(0, 0);
-  };
 
-  const handleViewSystem = (id: string) => {
-      setSelectedSystemId(id);
-      setCurrentPage('system-detail');
-      window.scrollTo(0, 0);
-  };
+    return (
+        <div className="font-sans antialiased text-slate-900 min-h-screen">
+            <Navbar onNavigate={navigate} />
 
-  const getSelectedSystem = () => SYSTEMS_DATA.find(s => s.id === selectedSystemId) || SYSTEMS_DATA[0];
+            <main>
+                {currentPage === 'home' && (
+                    <>
+                        <Hero onNavigate={navigate} />
+                        <Problem />
+                        {/* Variant 'landing' makes cards look like gradient buttons */}
+                        <Systems systems={SYSTEMS_DATA} onViewSystem={handleViewSystem} variant="landing" />
+                        <Authority />
+                    </>
+                )}
 
-  if (loading) {
-      return (
-        <div className='bg-black h-screen w-screen flex flex-col justify-center items-center overflow-hidden px-4'>
-            {isMobile ? (
-                <>
-                {/* Mobile: Two lines animating simultaneously */}
-                <div className="h-[60px] w-full flex justify-center items-end">
-                    <VaporizeTextCycle
-                        texts={["TOMAS"]}
-                        font={{
-                            fontFamily: "Inter, sans-serif",
-                            fontSize: "45px",
-                            fontWeight: 800
-                        }}
-                        color="rgb(0, 89, 138)"
-                        spread={2}
-                        density={4}
-                        animation={{
-                            vaporizeDuration: 1.5,
-                            fadeInDuration: 0.5,
-                            waitDuration: 5
-                        }}
-                        direction="left-to-right"
-                        alignment="center"
-                        tag={Tag.H1}
+                {currentPage === 'systems' && (
+                    <SystemsPage
+                        onBack={() => navigate('home')}
+                        systems={SYSTEMS_DATA}
+                        onViewSystem={handleViewSystem}
                     />
-                </div>
-                <div className="h-[60px] w-full flex justify-center items-start">
-                    <VaporizeTextCycle
-                        texts={["NAVARRO"]}
-                        font={{
-                            fontFamily: "Inter, sans-serif",
-                            fontSize: "45px",
-                            fontWeight: 800
-                        }}
-                        color="rgb(0, 89, 138)"
-                        spread={2}
-                        density={4}
-                        animation={{
-                            vaporizeDuration: 1.5,
-                            fadeInDuration: 0.5,
-                            waitDuration: 5
-                        }}
-                        direction="left-to-right"
-                        alignment="center"
-                        tag={Tag.H1}
+                )}
+
+                {currentPage === 'contact' && (
+                    <ContactPage />
+                )}
+
+                {currentPage === 'audit' && (
+                    <AuditPage />
+                )}
+
+                {currentPage === 'system-detail' && (
+                    <SystemDetailPage
+                        system={getSelectedSystem()}
+                        onBack={() => navigate('home')}
+                        onScheduleAudit={() => navigate('audit')}
                     />
-                </div>
-                </>
-            ) : (
-                /* Desktop: Single line */
-                <VaporizeTextCycle
-                    texts={["TOMAS NAVARRO"]}
-                    font={{
-                        fontFamily: "Inter, sans-serif",
-                        fontSize: "60px",
-                        fontWeight: 800
-                    }}
-                    color="rgb(0, 89, 138)"
-                    spread={2}
-                    density={4}
-                    animation={{
-                        vaporizeDuration: 1.5,
-                        fadeInDuration: 0.5,
-                        waitDuration: 0.8
-                    }}
-                    direction="left-to-right"
-                    alignment="center"
-                    tag={Tag.H1}
-                />
-            )}
+                )}
+
+                {currentPage === 'legal' && <LegalNotice />}
+                {currentPage === 'privacy' && <PrivacyPolicy />}
+            </main>
+
+            <Footer onNavigate={navigate} />
         </div>
-      )
-  }
-
-  return (
-    <div className="font-sans antialiased text-slate-900 min-h-screen">
-      <Navbar onNavigate={navigate} />
-      
-      <main>
-        {currentPage === 'home' && (
-            <>
-                <Hero onNavigate={navigate} />
-                <Problem />
-                {/* Variant 'landing' makes cards look like gradient buttons */}
-                <Systems systems={SYSTEMS_DATA} onViewSystem={handleViewSystem} variant="landing" />
-                <Authority />
-            </>
-        )}
-
-        {currentPage === 'systems' && (
-             <SystemsPage 
-                onBack={() => navigate('home')} 
-                systems={SYSTEMS_DATA}
-                onViewSystem={handleViewSystem}
-             />
-        )}
-
-        {currentPage === 'contact' && (
-             <ContactPage />
-        )}
-
-        {currentPage === 'audit' && (
-             <AuditPage />
-        )}
-
-        {currentPage === 'system-detail' && (
-            <SystemDetailPage 
-                system={getSelectedSystem()} 
-                onBack={() => navigate('home')} 
-                onScheduleAudit={() => navigate('audit')}
-            />
-        )}
-      </main>
-      
-      <Footer onNavigate={navigate} />
-    </div>
-  );
+    );
 }
 
 export default App;

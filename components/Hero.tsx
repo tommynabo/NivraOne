@@ -4,7 +4,7 @@ import { ArrowRight, Play } from 'lucide-react';
 import { TextShimmer } from './TextShimmer';
 
 interface HeroProps {
-    onNavigate: (page: string) => void;
+  onNavigate: (page: string) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
@@ -12,7 +12,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
   return (
     <section className="relative pt-24 pb-16 lg:pt-48 lg:pb-32 overflow-hidden">
-      
+
       {/* CSS for Neon Snake Border Animation - Slowed down to 4s */}
       <style>{`
         .neon-box {
@@ -78,39 +78,42 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
-          
+
           {/* Left Column: Copy */}
           <div className="flex flex-col space-y-6 md:space-y-8 max-w-2xl pt-4 md:pt-0">
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
               Dejas de ser el{' '}
-               <div className="inline-block relative">
-                 {/* 
+              <div className="inline-block relative">
+                {/* 
                     Injecting CSS variables directly here to force the Brand Blue color.
                     --base-color: #00598A (Brand Blue)
                     --base-gradient-color: #ffffff (White shine)
                  */}
-                 <span style={{ "--base-color": "#00598A", "--base-gradient-color": "#ffffff" } as React.CSSProperties}>
-                    <TextShimmer 
-                        duration={2}
-                        className="font-extrabold"
-                    >
-                        {'freno de mano'}
-                    </TextShimmer>
-                 </span>
+                {/* 
+                    Injecting CSS variables directly here to force the Brand Blue color.
+                    --base-color: #00598A (Brand Blue)
+                    --base-gradient-color: #ffffff (White shine)
+                 */}
+                <TextShimmer
+                  duration={2}
+                  className="font-extrabold [--base-color:#00598A] [--base-gradient-color:#ffffff]"
+                >
+                  {'freno de mano'}
+                </TextShimmer>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
               </div>{' '}
               de tu propio negocio.
             </h1>
-            
+
             <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-lg">
               Ayudo a Consultores y Expertos a recuperar <strong className="text-slate-800">20h/semana</strong> sistematizando operaciones complejas con IA. Sin promesas vacías, solo ingeniería aplicada.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <GradientButton 
+              <GradientButton
                 onClick={() => onNavigate('systems')}
                 className="flex items-center gap-2 group w-full sm:w-auto"
               >
@@ -122,71 +125,71 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
           {/* Right Column: VSL Video with Horizontal Aspect Ratio */}
           <div className="relative group perspective-1000 mt-8 lg:mt-0 flex justify-center">
-             
-             {/* The Container with Neon Snake Border - REMOVED hover:scale to fix jitter/displacement */}
-             <div className="relative w-full max-w-[550px] aspect-video rounded-xl shadow-2xl bg-slate-900 neon-box">
-                
-                {/* The 4 Spans for the Snake Animation */}
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                
-                {/* Inner Content Container (Video) */}
-                <div className="absolute inset-[3px] bg-slate-900 rounded-lg overflow-hidden z-10">
-                   {!playVideo ? (
-                     <div 
-                        className="w-full h-full relative cursor-pointer group"
-                        onClick={() => setPlayVideo(true)}
-                     >
-                        {/* 
+
+            {/* The Container with Neon Snake Border - REMOVED hover:scale to fix jitter/displacement */}
+            <div className="relative w-full max-w-[550px] aspect-video rounded-xl shadow-2xl bg-slate-900 neon-box">
+
+              {/* The 4 Spans for the Snake Animation */}
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+
+              {/* Inner Content Container (Video) */}
+              <div className="absolute inset-[3px] bg-slate-900 rounded-lg overflow-hidden z-10">
+                {!playVideo ? (
+                  <div
+                    className="w-full h-full relative cursor-pointer group"
+                    onClick={() => setPlayVideo(true)}
+                  >
+                    {/* 
                             !!! IMPORTANTE !!!
                             CAMBIA la URL de 'src' abajo por la URL de tu imagen de captura.
                             Asegúrate de que sea una imagen horizontal (16:9) para que quede perfecta.
                         */}
-                        <img 
-                            src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80" 
-                            alt="Consultoría VSL Thumbnail"
-                            className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300"
-                        />
-                        
-                        {/* Overlay Gradient */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <img
+                      src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80"
+                      alt="Consultoría VSL Thumbnail"
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300"
+                    />
 
-                        {/* Centered Play Button */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="relative">
-                                <div className="absolute inset-0 bg-primary/50 rounded-full blur-xl animate-pulse"></div>
-                                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm border border-white/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                                    <Play className="w-8 h-8 text-white fill-white ml-1" />
-                                </div>
-                            </div>
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+
+                    {/* Centered Play Button */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-primary/50 rounded-full blur-xl animate-pulse"></div>
+                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm border border-white/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                          <Play className="w-8 h-8 text-white fill-white ml-1" />
                         </div>
+                      </div>
+                    </div>
 
-                        {/* Title Overlay */}
-                        <div className="absolute bottom-6 left-0 w-full text-center px-4">
-                            <span className="bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">
-                                Ver Video
-                            </span>
-                            <h3 className="text-white font-bold text-xl drop-shadow-lg">
-                                Cómo recuperar 20h/semana
-                            </h3>
-                        </div>
-                     </div>
-                   ) : (
-                     <iframe 
-                        src="https://drive.google.com/file/d/1nc5LNttft1UqcBNWv3JlHYabS9qJdkG2/preview" 
-                        className="w-full h-full"
-                        allow="autoplay; fullscreen"
-                        title="VSL NivraOne"
-                     ></iframe>
-                   )}
-                </div>
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-6 left-0 w-full text-center px-4">
+                      <span className="bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">
+                        Ver Video
+                      </span>
+                      <h3 className="text-white font-bold text-xl drop-shadow-lg">
+                        Cómo recuperar 20h/semana
+                      </h3>
+                    </div>
+                  </div>
+                ) : (
+                  <iframe
+                    src="https://drive.google.com/file/d/1nc5LNttft1UqcBNWv3JlHYabS9qJdkG2/preview"
+                    className="w-full h-full"
+                    allow="autoplay; fullscreen"
+                    title="VSL NivraOne"
+                  ></iframe>
+                )}
+              </div>
 
-             </div>
+            </div>
 
-             {/* Background Blob */}
-             <div className="absolute -inset-10 bg-gradient-to-tr from-primary/30 to-purple-500/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
+            {/* Background Blob */}
+            <div className="absolute -inset-10 bg-gradient-to-tr from-primary/30 to-purple-500/20 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
 
           </div>
         </div>
