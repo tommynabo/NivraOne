@@ -119,18 +119,15 @@ export const ContactPage: React.FC = () => {
                                                         "Construyendo sistemas de IA."
                                                     </p>
                                                     <div className="space-y-4 text-base leading-relaxed text-slate-600">
-                                                        {/* Removed paragraph as requested */}
                                                         <p>
-                                                            Vivimos apagando fuegos, atrapados en la operativa, siendo el cuello de botella de nuestro propio crecimiento. <strong>Eso no es emprender, es autoempleo de alto riesgo.</strong>
-                                                        </p>
-                                                        <p className="text-slate-900 font-medium">
-                                                            Mi obsesión es eliminar la fricción humana.
+                                                            Soy Tomás. No soy un don nadie. <br />
+                                                            Soy un arquitecto de sistemas.
                                                         </p>
                                                         <p>
-                                                            Diseño arquitecturas de Inteligencia Artificial que trabajan mientras duermes. Activos digitales que ejecutan procesos complejos con precisión quirúrgica.
+                                                            Mi obsesión es simple: Si una tarea se repite más de 3 veces, debe morir (ser sistematizada).
                                                         </p>
                                                         <p>
-                                                            Para que tú recuperes lo único que no se puede recuperar: <strong>Tu Tiempo.</strong>
+                                                            Ayudo a empresas, consutlores, coaches mentores y expertos a recuperar el activo más valioso que tienen y que no se reupera: <strong className="text-primary uppercase">EL TIEMPO</strong>
                                                         </p>
                                                     </div>
                                                 </div>

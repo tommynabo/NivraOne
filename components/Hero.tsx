@@ -104,7 +104,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           {/* Left Column: Copy */}
           <div className="flex flex-col space-y-6 md:space-y-8 max-w-2xl pt-4 md:pt-0">
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
               Recupera 20h a la semana{' '}
               <div className="inline-block relative">
                 <span className="shine-text drop-shadow-sm font-black">

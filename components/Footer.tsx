@@ -1,5 +1,6 @@
 import React from 'react';
 import { GradientButton } from './GradientButton';
+import { SocialIcons } from './SocialIcons';
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -32,6 +33,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <p className="text-slate-500 text-sm mt-4">
             *Si decides contratar un Sistema, los 197€ se descuentan del precio final.
           </p>
+          <div className="mt-6">
+            <SocialIcons />
+          </div>
         </div>
 
         <div className="mt-20 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
