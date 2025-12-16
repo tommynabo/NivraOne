@@ -102,26 +102,27 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 
           {/* Left Column: Copy */}
-          <div className="flex flex-col space-y-6 md:space-y-8 max-w-2xl pt-4 md:pt-0">
+          <div className="flex flex-col space-y-6 md:space-y-8 max-w-2xl pt-4 md:pt-0 items-center text-center mx-auto">
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
-              Recupera 20h a la semana{' '}
-              <div className="inline-block relative">
-                <span className="shine-text drop-shadow-sm font-black">
-                  sistematizando
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight text-center flex flex-col items-center">
+              <div className="inline-block relative mb-2 scale-110 md:scale-125">
+                <span className="shine-text drop-shadow-sm font-black text-4xl md:text-6xl lg:text-7xl">
+                  Sistematizando
                 </span>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
               </div>{' '}
-              tu operativa con Ingeniería de IA
+              <span className="block mt-2">
+                tu operativa con Ingeniería de IA
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-lg">
               No implemento 'chatbots'. Diseño e instalo Sistemas de Trabajo Autónomos para Consultores y Expertos que quieren escalar sin contratar más personal.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center w-full">
               <GradientButton
                 onClick={() => onNavigate('systems')}
                 className="flex items-center gap-2 group w-full sm:w-auto"

@@ -36,8 +36,10 @@ export function SocialIcons() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
     return (
-        <div className="relative flex items-center gap-0.5 px-1.5 py-1.5 rounded-2xl bg-neutral-950 border border-white/[0.08]">
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-white/[0.03] to-transparent pointer-events-none" />
+        <div className="relative flex items-center gap-2 px-2 py-2 rounded-2xl">
+            {/* Background removed/transparent or simple white container if needed, but user asked for buttons to be white. */}
+            {/* User said: "el boton/el fondo a balnco" (button/background to white) and logos to blue. */}
+            {/* Let's make individual buttons white. */}
 
             {socials.map((social, index) => (
                 <a
@@ -45,19 +47,16 @@ export function SocialIcons() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative flex items-center justify-center size-10 rounded-xl transition-colors duration-200"
+                    className="group relative flex items-center justify-center size-10 rounded-xl transition-all duration-200 bg-white hover:scale-110 shadow-lg"
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                     aria-label={social.name}
                 >
-                    <span
-                        className={`absolute inset-1 rounded-lg bg-white/[0.08] transition-all duration-300 ease-out ${hoveredIndex === index ? "opacity-100 scale-100" : "opacity-0 scale-90"
-                            }`}
-                    />
+                    {/* Hover effect overlay or similar if needed, keeping simple white bg as base */}
+                    {/* Removed the inset-1 bg-white/[0.08] since button is already white */}
 
                     <span
-                        className={`relative z-10 transition-all duration-300 ease-out ${hoveredIndex === index ? "text-white scale-110" : "text-white"
-                            }`}
+                        className={`relative z-10 transition-all duration-300 ease-out text-slate-900`}
                     >
                         {social.icon}
                     </span>
