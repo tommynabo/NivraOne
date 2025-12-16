@@ -130,12 +130,14 @@ function App() {
                             onViewSystem={(id) => navigate(`/sistemas/${id}`)}
                         />
                     } />
-                    <Route path="/sistemas/:id" element={<SystemDetailPage onBack={() => navigate(-1)} onScheduleAudit={() => navigate('/audit')} />} />
+                    <Route path="/sistemas/:id" element={<SystemDetailPage onBack={() => navigate(-1)} onScheduleAudit={() => navigate('/auditoria')} />} />
                     <Route path="/contacto" element={<ContactPage />} />
-                    <Route path="/contact" element={<ContactPage />} /> {/* Fallback/Alias */}
-                    <Route path="/audioria" element={<AuditPage />} /> {/* Typo fix potentially? User said 'audit' in code, but URL likely 'auditoria' */}
                     <Route path="/auditoria" element={<AuditPage />} />
+
+                    {/* Redirects/Aliases for safety */}
+                    <Route path="/contact" element={<ContactPage />} />
                     <Route path="/audit" element={<AuditPage />} />
+
                     <Route path="/legal" element={<LegalNotice />} />
                     <Route path="/privacy" element={<PrivacyPolicy />} />
                 </Routes>

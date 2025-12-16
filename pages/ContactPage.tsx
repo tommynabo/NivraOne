@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, User, Briefcase, Send, Sparkles, ArrowLeft, ArrowRight, Star } from 'lucide-react';
+import { Mail, User, Briefcase, Send, Sparkles, ArrowLeft, ArrowRight } from 'lucide-react';
 import { GradientButton } from '../components/GradientButton';
 import { motion, AnimatePresence } from 'framer-motion';
 import DisplayCards, { DisplayCardProps } from '../components/DisplayCards';
@@ -23,7 +23,8 @@ export const ContactPage: React.FC = () => {
             title: "Sobre NivraOne",
             description: "Liberar el talento humano de la esclavitud administrativa.",
             date: "Vision",
-            icon: <Sparkles className="size-5 text-purple-500" />,
+            // Changed icon color to primary (blue)
+            icon: <Sparkles className="size-5 text-primary" />,
             titleClassName: "text-slate-900",
             onClick: () => setExpandedCard('mission')
         },
@@ -32,7 +33,7 @@ export const ContactPage: React.FC = () => {
             title: "Contacto",
             description: "Sin intermediarios. Bandeja de entrada personal.",
             date: "Acción",
-            icon: <Mail className="size-5 text-green-500" />,
+            icon: <Mail className="size-5 text-primary" />, // Green -> Primary (Blue) for consistency or keep green? User said "cambia los colores a azul... vision aparece lila, cambialo a azul". Contact was green, I'll keep green or make blue? "cambia los colores a azul de cada carta". Okay, all blue.
             titleClassName: "text-slate-900",
             onClick: () => setExpandedCard('contact')
         }
@@ -44,7 +45,7 @@ export const ContactPage: React.FC = () => {
             {/* Background Decoration */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
                 <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-purple-100/50 rounded-full blur-[100px]"></div>
+                <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-100/30 rounded-full blur-[100px]"></div>
             </div>
 
             <div className="container mx-auto px-6 md:px-12 max-w-4xl relative z-10">
@@ -74,13 +75,13 @@ export const ContactPage: React.FC = () => {
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }} // smooth ease
+                            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                             className="relative w-full"
                         >
-                            {/* Expanded Card Container - Dynamic Blue Styling */}
+                            {/* Expanded Card Container */}
                             <div className={cn(
                                 "relative w-full rounded-3xl p-[2px] overflow-hidden shadow-2xl transition-all duration-500",
-                                "bg-gradient-to-br from-blue-200 via-white to-blue-200", // Border Gradient
+                                "bg-gradient-to-br from-blue-200 via-white to-blue-200",
                                 "hover:shadow-[0_0_40px_rgba(0,89,138,0.15)]"
                             )}>
 
@@ -89,18 +90,16 @@ export const ContactPage: React.FC = () => {
 
                                     {/* Decoration Glows inside card */}
                                     <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-16 -mt-16 pointer-events-none"></div>
-                                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/5 rounded-full blur-[60px] -ml-12 -mb-12 pointer-events-none"></div>
+                                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-[60px] -ml-12 -mb-12 pointer-events-none"></div>
 
                                     {/* --- ABOUT SECTION --- */}
                                     {expandedCard === 'about' && (
                                         <div className="flex flex-col gap-8 flex-1 relative z-10">
                                             <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="bg-blue-50 p-4 rounded-2xl border border-blue-100 text-primary shadow-inner">
-                                                        <User size={32} />
-                                                    </div>
+                                                    {/* User Icon Removed */}
                                                     <div>
-                                                        <p className="text-sm font-bold text-primary uppercase tracking-wider">El Ingeniero</p>
+                                                        <p className="text-sm font-bold text-primary uppercase tracking-wider">El Ingeniero <span className="text-blue-500 ml-1">Founder</span></p>
                                                         <h2 className="text-3xl font-bold text-slate-900">Tomás Navarro</h2>
                                                     </div>
                                                 </div>
@@ -120,36 +119,31 @@ export const ContactPage: React.FC = () => {
                                                         "No arreglo ordenadores. Arreglo negocios que pierden tiempo."
                                                     </p>
                                                     <p className="leading-relaxed mb-4">
-                                                        Ingeniero de Software reconvertido a Arquitecto de Operaciones. Mi obsesión es eliminar la fricción humana de procesos repetitivos.
+                                                        Ingeniero de Software reconvertido a Arquitecto de Operaciones. Mi obsesión es eliminar la fricción humana de procesos repetitivos. POr algo más entusiasta apasionante y directo.
                                                     </p>
-                                                    <div className="flex gap-2 mt-6">
-                                                        <span className="px-3 py-1 bg-gray-100 rounded-lg text-xs font-bold text-slate-600">TypeScript</span>
-                                                        <span className="px-3 py-1 bg-gray-100 rounded-lg text-xs font-bold text-slate-600">n8n</span>
-                                                        <span className="px-3 py-1 bg-gray-100 rounded-lg text-xs font-bold text-slate-600">OpenAI API</span>
-                                                    </div>
+                                                    {/* Badges Removed */}
                                                 </div>
                                             </div>
                                         </div>
                                     )}
 
-                                    {/* --- MISSION SECTION --- */}
+                                    {/* --- MISSION SECTION (Updated to Blue & New Star Image) --- */}
                                     {expandedCard === 'mission' && (
                                         <div className="flex flex-col gap-8 flex-1 relative z-10">
                                             <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="bg-purple-50 p-4 rounded-2xl border border-purple-100 text-purple-600 shadow-inner">
-                                                        <Sparkles size={32} />
-                                                    </div>
+                                                    {/* Icon Removed */}
                                                     <div>
-                                                        <p className="text-sm font-bold text-purple-600 uppercase tracking-wider">La Visión</p>
+                                                        <p className="text-sm font-bold text-primary uppercase tracking-wider">La Visión</p>
                                                         <h2 className="text-3xl font-bold text-slate-900">NivraOne</h2>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div className="bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-purple-200 transition-colors">
-                                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                                    <Star size={100} className="text-purple-500" fill="currentColor" />
+                                            <div className="bg-gradient-to-br from-slate-50 to-white p-8 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group hover:border-blue-200 transition-colors">
+                                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-all duration-500">
+                                                    {/* Replaced Icon with Image */}
+                                                    <img src="/star-symbol.png" alt="Star" className="w-[120px] h-[120px] object-contain drop-shadow-[0_0_15px_rgba(0,89,138,0.5)]" />
                                                 </div>
                                                 <p className="text-xl text-slate-800 italic leading-relaxed font-serif relative z-10">
                                                     "Liberar el talento humano de la esclavitud administrativa. Queremos que te dediques exclusivamente a pensar, crear y liderar. Las máquinas se encargarán del resto."
@@ -169,16 +163,14 @@ export const ContactPage: React.FC = () => {
                                         </div>
                                     )}
 
-                                    {/* --- CONTACT SECTION --- */}
+                                    {/* --- CONTACT SECTION (Updated to Blue) --- */}
                                     {expandedCard === 'contact' && (
                                         <div className="flex flex-col gap-8 flex-1 relative z-10">
                                             <div className="flex items-center justify-between border-b border-gray-100 pb-6">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="bg-green-50 p-4 rounded-2xl border border-green-100 text-green-600 shadow-inner">
-                                                        <Mail size={32} />
-                                                    </div>
+                                                    {/* Icon Removed */}
                                                     <div>
-                                                        <p className="text-sm font-bold text-green-600 uppercase tracking-wider">Acción Inmediata</p>
+                                                        <p className="text-sm font-bold text-primary uppercase tracking-wider">Acción Inmediata</p>
                                                         <h2 className="text-3xl font-bold text-slate-900">Contacto Directo</h2>
                                                     </div>
                                                 </div>
@@ -191,7 +183,7 @@ export const ContactPage: React.FC = () => {
                                                     </p>
                                                     <a href="mailto:tomasnivraone@gmail.com" className="group flex items-center gap-4 p-4 bg-slate-50 rounded-xl border border-gray-200 hover:border-primary hover:bg-blue-50/50 transition-all">
                                                         <div className="bg-white p-2 rounded-full shadow-sm text-primary group-hover:scale-110 transition-transform">
-                                                            <ArrowRight size={20} />
+                                                            <Mail size={20} />
                                                         </div>
                                                         <span className="font-bold text-slate-900 text-lg group-hover:text-primary transition-colors">tomasnivraone@gmail.com</span>
                                                     </a>
@@ -225,11 +217,7 @@ export const ContactPage: React.FC = () => {
                                             Volver al Stack
                                         </button>
 
-                                        <div className="hidden md:flex gap-2">
-                                            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-                                            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-                                            <div className="w-2 h-2 rounded-full bg-gray-200"></div>
-                                        </div>
+                                        {/* Bottom-right dots removed */}
                                     </div>
 
                                 </div>

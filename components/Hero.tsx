@@ -74,6 +74,18 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             0% { bottom: -100%; }
             50%,100% { bottom: 100%; }
         }
+        @keyframes shine {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+        .shine-text {
+            background: linear-gradient(90deg, #00598A 0%, #00c6ff 50%, #00598A 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shine 3s linear infinite;
+        }
       `}</style>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
@@ -85,17 +97,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] tracking-tight">
               Dejas de ser el{' '}
               <div className="inline-block relative">
-                {/* 
-                    Injecting CSS variables directly here to force the Brand Blue color.
-                    --base-color: #00598A (Brand Blue)
-                    --base-gradient-color: #ffffff (White shine)
-                 */}
-                {/* 
-                    Injecting CSS variables directly here to force the Brand Blue color.
-                    --base-color: #00598A (Brand Blue)
-                    --base-gradient-color: #ffffff (White shine)
-                 */}
-                <span className="text-[#00598A] drop-shadow-[0_0_15px_rgba(0,89,138,0.3)]">
+                <span className="shine-text drop-shadow-sm font-black">
                   freno de mano
                 </span>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">

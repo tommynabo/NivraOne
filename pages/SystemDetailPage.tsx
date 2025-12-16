@@ -60,28 +60,42 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onSc
 
                         <div className="bg-soft-gray p-6 rounded-xl border border-gray-200 mb-8">
                             <h3 className="font-bold text-slate-900 mb-4">Lo que incluye la instalación:</h3>
-                            <ul className="space-y-3">
-                                {system.features.map((feat, idx) => (
-                                    <li key={idx} className="flex items-start">
-                                        <Check className="text-green-500 mr-3 mt-1 flex-shrink-0" size={18} />
-                                        <span className="text-slate-700">{feat}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div className="flex items-baseline gap-2 mb-2">
+                                <span className="text-4xl font-bold text-slate-900">{system.price}</span>
+                                <span className="text-lg font-medium text-slate-500">inicio</span>
+                            </div>
+                            <div className="flex items-baseline gap-2 mb-6">
+                                <span className="text-2xl font-bold text-primary">+ {system.monthlyFee}</span>
+                                <span className="text-sm font-medium text-slate-500">/ mes (mantenimiento)</span>
+                            </div>
+
+                            <div className="space-y-4 mb-8 text-left">
+                                <div className="flex gap-3">
+                                    <div className="bg-blue-50 p-2 rounded-full h-fit">
+                                        <Check className="w-4 h-4 text-primary" />
+                                    </div>
+                                    <span className="text-sm text-slate-600">Instalación y configuración completa</span>
+                                </div>
+                                <div className="flex gap-3">
+                                    <div className="bg-blue-50 p-2 rounded-full h-fit">
+                                        <Check className="w-4 h-4 text-primary" />
+                                    </div>
+                                    <span className="text-sm text-slate-600">Soporte y optimización continua</span>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 border-t border-gray-100">
-                            <div>
-                                <p className="text-sm text-slate-500 font-medium">Inversión Única</p>
-                                <p className="text-3xl font-bold text-slate-900">{system.price}</p>
-                            </div>
-                            <GradientButton onClick={onScheduleAudit} className="w-full sm:w-auto px-8 py-4 text-lg">
-                                Solicitar Este Sistema
-                            </GradientButton>
+                            <p className="text-sm text-slate-500 font-medium">Inversión Única</p>
+                            <p className="text-3xl font-bold text-slate-900">{system.price}</p>
                         </div>
+                        <GradientButton onClick={onScheduleAudit} className="w-full sm:w-auto px-8 py-4 text-lg">
+                            Solicitar Este Sistema
+                        </GradientButton>
                     </div>
                 </div>
             </div>
         </div>
+        </div >
     );
 };

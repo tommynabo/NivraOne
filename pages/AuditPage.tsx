@@ -5,9 +5,9 @@ import { CheckCircle2, ShieldCheck, Microscope, FileText, Video, Workflow, Termi
 export const AuditPage: React.FC = () => {
     return (
         <div className="pt-32 pb-24 bg-white min-h-screen relative overflow-hidden">
-             
-             <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
-                
+
+            <div className="container mx-auto px-6 md:px-12 max-w-5xl relative z-10">
+
                 {/* Header */}
                 <div className="text-center mb-16 max-w-3xl mx-auto">
                     <div className="inline-block bg-blue-50 text-primary px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-widest mb-4 animate-pulse">
@@ -52,7 +52,7 @@ export const AuditPage: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
                     {/* Deliverables List */}
                     <div>
-                         <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <h3 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                             Tus Entregables
                         </h3>
                         <div className="bg-soft-gray rounded-2xl p-8 border border-gray-200">
@@ -77,39 +77,43 @@ export const AuditPage: React.FC = () => {
                     <div className="relative group">
                         <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-cyan-300 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
                         <div className="relative bg-primary text-white p-8 md:p-10 rounded-2xl shadow-2xl overflow-hidden">
-                             {/* Background pattern */}
-                             <div className="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
-                                 <ShieldCheck size={200} />
-                             </div>
+                            {/* Background pattern */}
+                            <div className="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
+                                <ShieldCheck size={200} />
+                            </div>
 
-                             <h4 className="text-2xl font-bold flex items-center gap-3 mb-6 relative z-10">
+                            <h4 className="text-2xl font-bold flex items-center gap-3 mb-6 relative z-10">
                                 <ShieldCheck size={32} className="text-blue-200" />
                                 Garantía "Riesgo Cero"
-                             </h4>
-                             
-                             <div className="space-y-4 relative z-10 text-blue-50">
-                                 <p className="leading-relaxed font-medium">
+                            </h4>
+
+                            <div className="space-y-4 relative z-10 text-blue-50">
+                                <p className="leading-relaxed font-medium">
                                     Entiendo el escepticismo con la consultoría. Por eso mi promesa es absoluta:
-                                 </p>
-                                 <ul className="space-y-3 pl-2">
+                                </p>
+                                <ul className="space-y-3 pl-2">
                                     <li className="flex items-start gap-2">
                                         <CheckCircle2 size={18} className="mt-1 flex-shrink-0 text-blue-200" />
                                         <span><strong>100% Reembolsable:</strong> Si al terminar no sientes claridad total, te devuelvo el dinero. Sin preguntas.</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <CheckCircle2 size={18} className="mt-1 flex-shrink-0 text-blue-200" />
-                                        <span><strong>Deducible:</strong> Si trabajamos juntos, la auditoría te sale <strong>GRATIS</strong> (se descuenta del proyecto).</span>
+                                        <span><strong>Deducible:</strong> Si decides implementar un sistema, los <strong>197€</strong> de esta auditoría se descuentan 100% del precio final.</span>
                                     </li>
-                                 </ul>
-                             </div>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div className="text-center border-t border-gray-100 pt-16">
-                    <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+                    <p className="text-xl text-slate-600 mb-6 max-w-2xl mx-auto">
                         Reserva tu hora abajo y pasemos de la teoría a <span className="text-slate-900 font-bold underline decoration-primary decoration-4 underline-offset-4">montar el sistema</span>.
                     </p>
+                    <div className="mb-4">
+                        <span className="text-2xl font-bold text-slate-900">197€</span>
+                        <span className="text-slate-500 text-sm ml-2 font-medium uppercase tracking-wide">Sesión intensiva</span>
+                    </div>
                     <a href="https://cal.com/tomanavarro/auditoria" target="_blank" rel="noopener noreferrer">
                         <GradientButton className="text-xl px-16 py-6 shadow-blue-500/30 hover:shadow-blue-500/50 shadow-2xl hover:scale-105 transition-all duration-300 rounded-xl">
                             Reservar Auditoría

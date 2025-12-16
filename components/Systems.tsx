@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cn } from "../lib/utils";
 import { motion, useSpring, useTransform } from "framer-motion";
 import { Check, Star, ArrowRight } from "lucide-react";
-import confetti from "canvas-confetti";
 import { GradientButton } from './GradientButton';
 
 // --- Data Types ---
@@ -13,6 +12,7 @@ export interface SystemData {
   description: string;
   longDescription?: string;
   price: string;
+  monthlyFee: string;
   features: string[];
   videoId: number;
 }
@@ -37,81 +37,14 @@ function useMediaQuery(query: string) {
   return matches;
 }
 
-// Framer Motion Number Ticker
-const NumberTicker = ({ value }: { value: number }) => {
-  const spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
-  const display = useTransform(spring, (current) =>
-    Math.round(current).toLocaleString("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 })
-  );
-
-  useEffect(() => {
-    spring.set(value);
-  }, [value, spring]);
-
-  return <motion.span>{display}</motion.span>;
+// Framer Motion Number Ticker - reused for static feel or slight animation
+const NumberTicker = ({ value }: { value: string }) => {
+  return <span className="tabular-nums tracking-tight">{value}</span>;
 };
-
-const Label = ({ children, className }: { children?: React.ReactNode, className?: string }) => (
-  <div className={cn("text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70", className)}>
-    {children}
-  </div>
-);
-
-const Switch = React.forwardRef<HTMLButtonElement, { checked: boolean; onCheckedChange: (c: boolean) => void; className?: string }>(
-  ({ checked, onCheckedChange, className }, ref) => (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={checked}
-      ref={ref}
-      onClick={() => onCheckedChange(!checked)}
-      className={cn(
-        "peer inline-flex h-[24px] w-[44px] shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
-        checked ? "bg-primary" : "bg-gray-200",
-        className
-      )}
-    >
-      <span
-        className={cn(
-          "pointer-events-none block h-5 w-5 rounded-full bg-white shadow-lg ring-0 transition-transform",
-          checked ? "translate-x-5" : "translate-x-0"
-        )}
-      />
-    </button>
-  )
-);
-Switch.displayName = "Switch";
 
 // --- Main Component ---
 export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant = "page" }) => {
-  const [isOneTime, setIsOneTime] = useState(true);
   const isDesktop = useMediaQuery("(min-width: 768px)");
-  const switchRef = useRef<HTMLButtonElement>(null);
-
-  const handleToggle = (checked: boolean) => {
-    setIsOneTime(!checked);
-
-    if (checked && switchRef.current) {
-      const rect = switchRef.current.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: {
-          x: x / window.innerWidth,
-          y: y / window.innerHeight,
-        },
-        colors: ["#00598A", "#00c6ff", "#F3F4F6"],
-        ticks: 200,
-        gravity: 1.2,
-        decay: 0.94,
-        startVelocity: 30,
-        shapes: ["circle"],
-      });
-    }
-  };
 
   return (
     <section id="sistemas" className="container py-24 mx-auto px-6">
@@ -125,27 +58,8 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
         </p>
       </div>
 
-      <div className="flex justify-center mb-16">
-        <label className="relative inline-flex items-center cursor-pointer select-none group">
-          <Label className="mr-3 text-slate-600">
-            <Switch
-              ref={switchRef}
-              checked={!isOneTime}
-              onCheckedChange={handleToggle}
-              className="relative"
-            />
-          </Label>
-          <span className="font-semibold text-slate-700 group-hover:text-primary transition-colors">
-            Pago Fraccionado <span className="text-primary font-bold">(Flexible)</span>
-          </span>
-        </label>
-      </div>
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
         {systems.map((sys, index) => {
-          const basePrice = parseInt(sys.price.replace(/\./g, '').replace('€', '')) || 1000;
-          const displayPrice = isOneTime ? basePrice : Math.round(basePrice / 2 * 1.1);
-
           // Best Seller logic: Middle item (index 1)
           const isPopular = index === 1;
 
@@ -156,7 +70,6 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
             ? "group rounded-3xl p-8 text-center flex flex-col relative transition-all duration-300 text-white border-0 shadow-2xl hover:-translate-y-2"
             : "group rounded-3xl border p-8 bg-white text-center flex flex-col relative shadow-xl transition-all duration-300";
 
-          // FIXED: More robust styling for the popular card
           const cardPopularClasses = isPopular
             ? (isLanding
               ? "min-h-[620px] scale-105 z-20 shadow-[0_0_60px_rgba(0,89,138,0.5)] border-2 border-[#00c6ff]/50"
@@ -236,19 +149,25 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
                   {sys.subtitle}
                 </p>
 
-                <div className="mt-4 flex items-center justify-center gap-x-1 h-16">
-                  <span className={cn("text-5xl font-bold tracking-tight", textPrimary)}>
-                    <NumberTicker value={displayPrice} />
-                  </span>
-                  {!isOneTime && (
-                    <span className={cn("text-sm font-semibold leading-6 tracking-wide self-end mb-2", textSecondary)}>
-                      / mes (x2)
+                <div className="mt-4 flex flex-col items-center justify-center gap-y-1 h-20">
+                  <div className="flex items-baseline gap-1">
+                    <span className={cn("text-4xl font-bold tracking-tight", textPrimary)}>
+                      {sys.price}
                     </span>
-                  )}
+                    <span className={cn("text-sm font-medium opacity-80", textPrimary)}>inicio</span>
+                  </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className={cn("text-lg font-bold", textAccent)}>
+                      + {sys.monthlyFee}
+                    </span>
+                    <span className={cn("text-xs font-medium opacity-80", textSecondary)}>
+                      / mes
+                    </span>
+                  </div>
                 </div>
 
                 <p className={cn("text-xs leading-5 mt-2 h-4", textSecondary)}>
-                  {isOneTime ? "Pago único. Sin cuotas mensuales." : "Financiación simple en 2 plazos."}
+                  Setup inicial + Mantenimiento
                 </p>
 
                 <ul className="mt-8 gap-3 flex flex-col text-left mb-8 flex-grow">
