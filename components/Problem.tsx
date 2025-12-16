@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FileText, Users, Video, Zap } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Types & Data ---
 interface TimelineItem {
