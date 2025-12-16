@@ -96,6 +96,6 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onSc
                 </div>
             </div>
         </div>
-        </div >
+
     );
 };
