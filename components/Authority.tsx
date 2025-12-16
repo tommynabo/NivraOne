@@ -25,9 +25,7 @@ export const Authority: React.FC = () => {
               <p>
                 Cuando ves un flujo bien diseñado, todo cobra sentido. Cada cuadrado es una tarea que tú ya no haces. Cada línea es un dato moviéndose a la velocidad de la luz.
               </p>
-              <p>
-                Mi trabajo no es solo "conectar herramientas". Es <strong>Ingeniería de Procesos</strong>. Analizo dónde pierdes dinero y tiempo, diseño la lógica para solucionarlo, y luego construyo el sistema que lo ejecuta.
-              </p>
+
               <p className="font-medium text-slate-900 pt-4 border-l-4 border-primary pl-4">
                 "Sistematizar un proceso ineficiente solo magnifica la ineficiencia. Primero simplificamos, luego sistematizamos."
               </p>

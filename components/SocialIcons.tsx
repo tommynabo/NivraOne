@@ -56,7 +56,7 @@ export function SocialIcons() {
                     />
 
                     <span
-                        className={`relative z-10 transition-all duration-300 ease-out ${hoveredIndex === index ? "text-white scale-110" : "text-white/70"
+                        className={`relative z-10 transition-all duration-300 ease-out ${hoveredIndex === index ? "text-white scale-110" : "text-white"
                             }`}
                     >
                         {social.icon}

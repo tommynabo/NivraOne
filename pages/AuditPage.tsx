@@ -22,31 +22,57 @@ export const AuditPage: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2">
 
                         {/* Left: What you get */}
-                        <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-slate-100">
-                            <h3 className="text-2xl font-bold text-slate-900 mb-6">En 60 minutos:</h3>
-                            <ul className="space-y-4">
-                                <li className="flex items-start gap-4">
-                                    <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Microscope size={20} /></div>
-                                    <div>
-                                        <h4 className="font-bold text-slate-900">Disección Operativa</h4>
-                                        <p className="text-sm text-slate-600">Encuentro dónde pierdes dinero.</p>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Workflow size={20} /></div>
-                                    <div>
-                                        <h4 className="font-bold text-slate-900">Arquitectura en Vivo</h4>
-                                        <p className="text-sm text-slate-600">Diseño el diagrama de flujo exacto.</p>
-                                    </div>
-                                </li>
-                                <li className="flex items-start gap-4">
-                                    <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Terminal size={20} /></div>
-                                    <div>
-                                        <h4 className="font-bold text-slate-900">Plan de Acción</h4>
-                                        <p className="text-sm text-slate-600">Stack tecnológico y cronograma.</p>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-slate-100 flex flex-col gap-8">
+                            <div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-6">En 60 minutos:</h3>
+                                <ul className="space-y-4">
+                                    <li className="flex items-start gap-4">
+                                        <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Microscope size={20} /></div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900">Disección Operativa</h4>
+                                            <p className="text-sm text-slate-600">Encuentro dónde pierdes dinero.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Workflow size={20} /></div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900">Arquitectura en Vivo</h4>
+                                            <p className="text-sm text-slate-600">Diseño el diagrama de flujo exacto.</p>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Terminal size={20} /></div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900">Plan de Acción</h4>
+                                            <p className="text-sm text-slate-600">Stack tecnológico y cronograma.</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h3 className="text-2xl font-bold text-slate-900 mb-6">Entregables de la auditoría:</h3>
+                                <ul className="space-y-4">
+                                    <li className="flex items-start gap-4">
+                                        <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><FileText size={20} /></div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900">Mapa de Arquitectura (PDF)</h4>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><Video size={20} /></div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900">Grabación de la Estrategia</h4>
+                                        </div>
+                                    </li>
+                                    <li className="flex items-start gap-4">
+                                        <div className="bg-blue-50 p-2 rounded-lg text-primary mt-1"><CheckCircle2 size={20} /></div>
+                                        <div>
+                                            <h4 className="font-bold text-slate-900">Propuesta de Implementación</h4>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Right: The Guarantee & Price */}
@@ -85,22 +111,6 @@ export const AuditPage: React.FC = () => {
                             </div>
                         </div>
 
-                    </div>
-                </div>
-
-                {/* Deliverables Simple */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                        <FileText className="w-8 h-8 mx-auto text-primary mb-3" />
-                        <h4 className="font-bold text-slate-900">Mapa de Arquitectura (PDF)</h4>
-                    </div>
-                    <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                        <Video className="w-8 h-8 mx-auto text-primary mb-3" />
-                        <h4 className="font-bold text-slate-900">Grabación de la Estrategia</h4>
-                    </div>
-                    <div className="bg-white p-6 rounded-2xl border border-slate-200">
-                        <CheckCircle2 className="w-8 h-8 mx-auto text-primary mb-3" />
-                        <h4 className="font-bold text-slate-900">Propuesta de Implementación</h4>
                     </div>
                 </div>
 
