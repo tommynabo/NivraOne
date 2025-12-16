@@ -12,7 +12,7 @@ export const ContactPage: React.FC = () => {
         {
             id: 'about',
             title: "Sobre Mí",
-            description: "No arreglo ordenadores. Arreglo negocios que pierden tiempo.",
+            description: "Construyendo sistemas de IA.",
             date: "Founder",
             icon: <User className="size-5 text-primary" />,
             titleClassName: "text-slate-900",
@@ -42,8 +42,8 @@ export const ContactPage: React.FC = () => {
     return (
         <div className="pt-24 pb-20 bg-white min-h-screen relative overflow-hidden flex flex-col items-center justify-center">
 
-            {/* Background Decoration */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
+            {/* Background Decoration - Hidden on Mobile for Performance */}
+            <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden hidden md:block">
                 <div className="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-blue-100/50 rounded-full blur-[120px]"></div>
                 <div className="absolute bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-100/30 rounded-full blur-[100px]"></div>
             </div>
@@ -88,9 +88,9 @@ export const ContactPage: React.FC = () => {
                                 {/* Inner Card Content */}
                                 <div className="bg-white/95 backdrop-blur-xl rounded-[22px] p-8 md:p-12 min-h-[500px] flex flex-col relative overflow-hidden">
 
-                                    {/* Decoration Glows inside card */}
-                                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-16 -mt-16 pointer-events-none"></div>
-                                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-[60px] -ml-12 -mb-12 pointer-events-none"></div>
+                                    {/* Decoration Glows inside card - Hidden on Mobile */}
+                                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -mr-16 -mt-16 pointer-events-none hidden md:block"></div>
+                                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/5 rounded-full blur-[60px] -ml-12 -mb-12 pointer-events-none hidden md:block"></div>
 
                                     {/* --- ABOUT SECTION --- */}
                                     {expandedCard === 'about' && (
@@ -116,12 +116,10 @@ export const ContactPage: React.FC = () => {
                                                 </div>
                                                 <div className="prose text-slate-600 flex-1">
                                                     <p className="text-xl font-bold text-slate-900 mb-6 leading-relaxed">
-                                                        "No arreglo ordenadores. Arreglo negocios que pierden tiempo."
+                                                        "Construyendo sistemas de IA."
                                                     </p>
                                                     <div className="space-y-4 text-base leading-relaxed text-slate-600">
-                                                        <p>
-                                                            Dejé la ingeniería tradicional cuando entendí que el verdadero "bug" no estaba en el código, sino en las agendas de los fundadores.
-                                                        </p>
+                                                        {/* Removed paragraph as requested */}
                                                         <p>
                                                             Vivimos apagando fuegos, atrapados en la operativa, siendo el cuello de botella de nuestro propio crecimiento. <strong>Eso no es emprender, es autoempleo de alto riesgo.</strong>
                                                         </p>
@@ -195,10 +193,10 @@ export const ContactPage: React.FC = () => {
                                                         Sin formularios interminables. Sin intermediarios. Tu mensaje llega directamente a mi bandeja de entrada personal.
                                                     </p>
                                                     <a href="mailto:tomasnivraone@gmail.com" className="group flex items-center gap-4 p-4 bg-slate-50 rounded-xl border border-gray-200 hover:border-primary hover:bg-blue-50/50 transition-all">
-                                                        <div className="bg-white p-2 rounded-full shadow-sm text-primary group-hover:scale-110 transition-transform">
+                                                        <div className="bg-white p-2 rounded-full shadow-sm text-primary group-hover:scale-110 transition-transform flex-shrink-0">
                                                             <Mail size={20} />
                                                         </div>
-                                                        <span className="font-bold text-slate-900 text-lg group-hover:text-primary transition-colors">tomasnivraone@gmail.com</span>
+                                                        <span className="font-bold text-slate-900 text-sm sm:text-lg group-hover:text-primary transition-colors break-all">tomasnivraone@gmail.com</span>
                                                     </a>
                                                 </div>
 

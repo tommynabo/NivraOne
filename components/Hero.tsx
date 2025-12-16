@@ -85,6 +85,14 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             -webkit-background-clip: text;
             background-clip: text;
             animation: shine 3s linear infinite;
+            will-change: background-position;
+        }
+        @media (max-width: 768px) {
+            .neon-box span { display: none !important; }
+            .neon-box { 
+                border: 1px solid #00c6ff; 
+                box-shadow: 0 0 20px rgba(0, 198, 255, 0.2); 
+            }
         }
       `}</style>
 
