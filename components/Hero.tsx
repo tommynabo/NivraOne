@@ -95,12 +95,9 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                     --base-color: #00598A (Brand Blue)
                     --base-gradient-color: #ffffff (White shine)
                  */}
-                <TextShimmer
-                  duration={2}
-                  className="font-extrabold [--base-color:#00598A] [--base-gradient-color:#ffffff]"
-                >
-                  {'freno de mano'}
-                </TextShimmer>
+                <span className="text-[#00598A] drop-shadow-[0_0_15px_rgba(0,89,138,0.3)]">
+                  freno de mano
+                </span>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
@@ -144,17 +141,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   >
                     {/* 
                             !!! IMPORTANTE !!!
-                            CAMBIA la URL de 'src' abajo por la URL de tu imagen de captura.
-                            Asegúrate de que sea una imagen horizontal (16:9) para que quede perfecta.
+                            Thumbnail updated locally.
                         */}
                     <img
-                      src="https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80"
+                      src="/vsl-thumbnail.png"
                       alt="Consultoría VSL Thumbnail"
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                     />
-
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
 
                     {/* Centered Play Button */}
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -164,16 +157,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                           <Play className="w-8 h-8 text-white fill-white ml-1" />
                         </div>
                       </div>
-                    </div>
-
-                    {/* Title Overlay */}
-                    <div className="absolute bottom-6 left-0 w-full text-center px-4">
-                      <span className="bg-primary/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest mb-2 inline-block">
-                        Ver Video
-                      </span>
-                      <h3 className="text-white font-bold text-xl drop-shadow-lg">
-                        Cómo recuperar 20h/semana
-                      </h3>
                     </div>
                   </div>
                 ) : (
