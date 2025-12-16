@@ -14,9 +14,9 @@ export function Navbar({ onNavigate, currentPath }: NavbarProps) {
 
   const items = [
     { name: "Inicio", id: "home", path: "/", icon: Home },
-    { name: "Sistemas", id: "systems", path: "/sistemas", icon: LayoutGrid },
-    { name: "Contacto", id: "contact", path: "/contacto", icon: User },
-    { name: "Auditoría", id: "audit", path: "/auditoria", icon: Zap },
+    { name: "Sistemas", id: "sistemas", path: "/sistemas", icon: LayoutGrid },
+    { name: "Contacto", id: "contacto", path: "/contacto", icon: User },
+    { name: "Auditoría", id: "auditoria", path: "/auditoria", icon: Zap },
   ]
 
   useEffect(() => {

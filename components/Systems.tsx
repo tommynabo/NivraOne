@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "../lib/utils";
-import { motion, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Check, Star, ArrowRight } from "lucide-react";
 import { GradientButton } from './GradientButton';
 
@@ -20,10 +20,8 @@ export interface SystemData {
 interface SystemsProps {
   systems: SystemData[];
   onViewSystem: (id: string) => void;
-  variant?: "landing" | "page"; // Control styling
+  variant?: "landing" | "page";
 }
-
-// --- Helper Components ---
 
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
@@ -37,12 +35,6 @@ function useMediaQuery(query: string) {
   return matches;
 }
 
-// Framer Motion Number Ticker - reused for static feel or slight animation
-const NumberTicker = ({ value }: { value: string }) => {
-  return <span className="tabular-nums tracking-tight">{value}</span>;
-};
-
-// --- Main Component ---
 export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant = "page" }) => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -58,34 +50,31 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
         {systems.map((sys, index) => {
-          // Best Seller logic: Middle item (index 1)
           const isPopular = index === 1;
-
-          // Styles based on Variant
           const isLanding = variant === "landing";
 
+          // Card Classes - Enforcing White Background style for 'page' variant as requested by "Restore content"
+          // If isLanding -> Blue/Dark theme.
+          // If !isLanding -> White/Light theme.
           const cardBaseClasses = isLanding
             ? "group rounded-3xl p-8 text-center flex flex-col relative transition-all duration-300 text-white border-0 shadow-2xl hover:-translate-y-2"
-            : "group rounded-3xl border p-8 bg-white text-center flex flex-col relative shadow-xl transition-all duration-300";
+            : "group rounded-3xl border border-gray-200 p-8 bg-white text-center flex flex-col relative shadow-xl transition-all duration-300 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1";
 
           const cardPopularClasses = isPopular
             ? (isLanding
               ? "min-h-[620px] scale-105 z-20 shadow-[0_0_60px_rgba(0,89,138,0.5)] border-2 border-[#00c6ff]/50"
-              : "border-primary border-2 shadow-primary/20 min-h-[620px]")
-            : (isLanding
-              ? "min-h-[580px] opacity-90 hover:opacity-100"
-              : "border-gray-200 hover:border-primary/50 min-h-[580px]");
+              : "min-h-[620px] border-primary/50 shadow-blue-900/10 scale-105 z-20 ring-1 ring-primary/20")
+            : "min-h-[580px]";
 
+          // Text Colors
           const textPrimary = isLanding ? "text-white" : "text-slate-900";
           const textSecondary = isLanding ? "text-blue-100" : "text-slate-500";
           const textAccent = isLanding ? "text-blue-200" : "text-primary";
           const iconColor = isLanding ? "text-blue-200" : "text-green-600";
           const iconBg = isLanding ? "bg-white/10" : "bg-green-100";
 
-          // Dynamic background logic
-          // Popular card gets a solid, powerful gradient. Standard cards get a subtler one.
           const landingBackgroundStyle = isLanding ? {
             background: isPopular
               ? 'linear-gradient(180deg, #00598A 0%, #002d4a 100%)'
@@ -96,108 +85,66 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
             <motion.div
               key={sys.id}
               initial={{ y: 50, opacity: 1 }}
-              whileInView={
-                isDesktop
-                  ? {
-                    y: 0,
-                    opacity: 1,
-                    x: 0,
-                    scale: isPopular ? 1.05 : 0.95,
-                    zIndex: isPopular ? 20 : 10
-                  }
-                  : undefined
-              }
+              whileInView={isDesktop ? { y: 0, opacity: 1, scale: isPopular ? 1.05 : 0.95 } : undefined}
               viewport={{ once: true }}
-              transition={{
-                duration: 1.6,
-                type: "spring",
-                stiffness: 100,
-                damping: 30,
-                delay: 0.4,
-                opacity: { duration: 0.5 },
-              }}
+              transition={{ duration: 0.5 }}
               className={cn(cardBaseClasses, cardPopularClasses)}
               style={landingBackgroundStyle}
             >
               {isPopular && (
                 <div className={cn(
-                  "absolute -top-6 right-0 left-0 mx-auto w-fit py-2 px-6 rounded-full flex items-center z-30",
+                  "absolute -top-5 right-0 left-0 mx-auto w-fit py-1.5 px-4 rounded-full flex items-center z-30 shadow-lg",
                   isLanding
-                    ? "bg-white text-[#00598A] shadow-[0_0_20px_rgba(255,255,255,0.6)] border border-blue-100"
-                    : "bg-primary text-white"
+                    ? "bg-white text-[#00598A]"
+                    : "bg-[#00598A] text-white"
                 )}>
-                  <Star className={cn("h-5 w-5 fill-current", isLanding ? "text-[#00598A]" : "text-white")} />
-                  <span className="ml-2 font-sans font-extrabold text-sm tracking-widest uppercase">
-                    Más Vendido
-                  </span>
+                  <Star className="h-4 w-4 fill-current" />
+                  <span className="ml-2 font-bold text-xs tracking-widest uppercase">Más Vendido</span>
                 </div>
-              )}
-
-              {/* Enhanced Glow for Popular Card */}
-              {isLanding && isPopular && (
-                <>
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00c6ff] to-transparent opacity-50"></div>
-                  <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#00c6ff] opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
-                </>
               )}
 
               <div className="flex-1 flex flex-col relative z-10">
-                <p className={cn("text-lg font-bold", textPrimary)}>
-                  {sys.title}
-                </p>
-                <p className={cn("text-xs font-bold uppercase tracking-widest mb-4", textAccent)}>
-                  {sys.subtitle}
-                </p>
+                <p className={cn("text-lg font-bold mb-1", textPrimary)}>{sys.title}</p>
+                <p className={cn("text-xs font-bold uppercase tracking-widest mb-6", textAccent)}>{sys.subtitle}</p>
 
-                <div className="mt-4 flex flex-col items-center justify-center gap-y-1 h-20">
+                {/* PRICING SECTION */}
+                <div className="flex flex-col items-center justify-center min-h-[100px] mb-4">
                   <div className="flex items-baseline gap-1">
-                    <span className={cn("text-4xl font-bold tracking-tight", textPrimary)}>
+                    <span className={cn("text-5xl font-extrabold tracking-tight", textPrimary)}>
                       {sys.price}
                     </span>
-                    <span className={cn("text-sm font-medium opacity-80", textPrimary)}>inicio</span>
                   </div>
-                  <div className="flex items-baseline gap-1">
-                    <span className={cn("text-lg font-bold", textAccent)}>
-                      + {sys.monthlyFee}
-                    </span>
-                    <span className={cn("text-xs font-medium opacity-80", textSecondary)}>
-                      / mes
-                    </span>
+                  <p className={cn("text-xs font-medium opacity-80 mt-1", textSecondary)}>Pago Inicial (Auditoría incluida)</p>
+
+                  <div className="flex items-baseline gap-1 mt-3">
+                    <span className={cn("text-xl font-bold", textAccent)}>+ {sys.monthlyFee}</span>
+                    <span className={cn("text-sm font-medium", textSecondary)}>/ mes</span>
                   </div>
                 </div>
 
-                <p className={cn("text-xs leading-5 mt-2 h-4", textSecondary)}>
-                  Setup inicial + Mantenimiento
-                </p>
+                <hr className={cn("my-6 border-dashed", isLanding ? "border-white/20" : "border-slate-200")} />
 
-                <ul className="mt-8 gap-3 flex flex-col text-left mb-8 flex-grow">
+                <ul className="gap-4 flex flex-col text-left mb-8 flex-grow">
                   {sys.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
-                      <div className={cn("rounded-full p-0.5 mt-0.5", iconBg)}>
+                      <div className={cn("rounded-full p-1 mt-0.5", iconBg)}>
                         <Check className={cn("h-3 w-3 flex-shrink-0", iconColor)} />
                       </div>
-                      <span className={cn("text-sm", isLanding ? "text-gray-100" : "text-slate-600")}>{feature}</span>
+                      <span className={cn("text-sm font-medium leading-tight", isLanding ? "text-blue-50" : "text-slate-600")}>{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className={cn("mt-auto pt-6 w-full", isLanding ? "border-t border-white/10" : "border-t border-gray-100")}>
+                <div className="mt-auto">
                   <GradientButton
                     onClick={() => onViewSystem(sys.id)}
-                    variant={isLanding ? "white" : (isPopular ? "default" : "variant")}
-                    className={cn(
-                      "w-full transition-all duration-300",
-                      isLanding && "group-hover:scale-105 group-hover:shadow-lg hover:shadow-blue-500/20"
-                    )}
+                    variant={isLanding ? "white" : (isPopular ? "default" : "variant")} /// Ensure default variant is blue for popular
+                    className="w-full shadow-lg"
                   >
                     <span className="flex items-center gap-2">
-                      Ver Detalles
-                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      Ver Detalles <ArrowRight className="w-4 h-4" />
                     </span>
                   </GradientButton>
-                  <p className={cn("mt-4 text-xs leading-5 px-4", isLanding ? "text-blue-200" : "text-slate-400")}>
-                    {sys.description.substring(0, 80)}...
-                  </p>
                 </div>
               </div>
             </motion.div>

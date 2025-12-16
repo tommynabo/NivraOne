@@ -12,7 +12,7 @@ export const ContactPage: React.FC = () => {
         {
             id: 'about',
             title: "Sobre Mí",
-            description: "Ingeniero de Software reconvertido a Arquitecto de Operaciones.",
+            description: "No arreglo ordenadores. Arreglo negocios que pierden tiempo.",
             date: "Founder",
             icon: <User className="size-5 text-primary" />,
             titleClassName: "text-slate-900",
@@ -118,10 +118,29 @@ export const ContactPage: React.FC = () => {
                                                     <p className="text-xl font-medium text-slate-900 mb-4 leading-relaxed">
                                                         "No arreglo ordenadores. Arreglo negocios que pierden tiempo."
                                                     </p>
-                                                    <p className="leading-relaxed mb-4">
-                                                        Ingeniero de Software reconvertido a Arquitecto de Operaciones. Mi obsesión es eliminar la fricción humana de procesos repetitivos. POr algo más entusiasta apasionante y directo.
-                                                    </p>
-                                                    {/* Badges Removed */}
+                                                    <div className="space-y-4 text-sm leading-relaxed">
+                                                        <p>
+                                                            Ingeniero de Software reconvertido a Arquitecto de Operaciones. Desde los 14 años he intentado crear negocios. Primero con una tienda online de relojes, luego con agencias de marketing, proyectos de marca personal… y más de un fracaso de los que te enseñan más que cualquier curso.
+                                                        </p>
+                                                        <p>
+                                                            Durante años trabajaba de sol a sol, probando estrategias que no terminaban de funcionar. Y en cada intento me hacía la misma pregunta:
+                                                            <strong> ¿Cómo puedo emprender sin sentir que el negocio me esclaviza?</strong>
+                                                        </p>
+                                                        <p>
+                                                            La respuesta la encontré en la inteligencia artificial. Por primera vez vi cómo era posible automatizar tareas repetitivas, reducir errores y liberar tiempo para lo importante: clientes, estrategia, creatividad, vida personal.
+                                                        </p>
+                                                        <p>
+                                                            Hoy mi misión es clara:
+                                                            <br />👉 Ayudar a emprendedores, autónomos y negocios locales a aprovechar la IA para trabajar menos, facturar más y dejar de vivir apagando fuegos.
+                                                        </p>
+                                                        <p>
+                                                            He acompañado desde clínicas hasta pequeños negocios a implementar agentes de IA que atienden llamadas 24/7, agendan citas y eliminan errores administrativos.
+                                                        </p>
+                                                        <p className="font-semibold text-primary">
+                                                            Si has llegado hasta aquí, te dejo una invitación:
+                                                            <br />👉 Escríbeme "IA" y te muestro cómo un agente de inteligencia artificial puede transformar tu negocio en menos de 15 minutos.
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

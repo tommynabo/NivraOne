@@ -24,7 +24,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         <div className="flex flex-col items-center gap-4">
           <GradientButton
             variant="white"
-            onClick={() => onNavigate('audit')}
+            onClick={() => onNavigate('auditoria')}
             className="px-8 py-4 text-lg font-bold shadow-xl hover:shadow-2xl hover:scale-105 transition-transform duration-300"
           >
             Reservar Auditoría (197€)
