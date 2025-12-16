@@ -1,3 +1,17 @@
+import React from 'react';
+import { Navbar } from '../components/Navbar'; // Re-adding if needed, but previously we removed it. Wait, the design was to REMOVE navbar from inside.
+// Actually, looking at the file content in Step 152:
+// 1: export const LegalNotice: React.FC = () => {
+// It uses React.FC so it NEEDS React imported.
+// It DOES NOT use Navbar/Footer inside anymore (App.tsx handles it?). 
+// Wait, looking at App.tsx (Step 66/Viewed Files), we saw:
+// {currentPage === 'legal' && <LegalNotice />}
+// And App.tsx likely has Navbar/Footer OUTSIDE these conditionals? 
+// Let's check App.tsx to be sure. 
+// If App.tsx puts Navbar/Footer around everything, then we don't need them here.
+// But we definitely need `import React from 'react';`
+import React from 'react';
+
 export const LegalNotice: React.FC = () => {
     return (
         <div className="bg-slate-50 min-h-screen font-sans text-slate-800">
