@@ -114,11 +114,13 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
                       {sys.price}
                     </span>
                   </div>
-                  <p className={cn("text-xs font-medium opacity-80 mt-1", textSecondary)}>Pago Inicial (Auditoría incluida)</p>
+                  <p className={cn("text-xs font-bold opacity-90 mt-1 uppercase tracking-tight", textAccent)}>
+                    (Auditoría + 1ª Mensualidad Incluida)
+                  </p>
 
-                  <div className="flex items-baseline gap-1 mt-3">
-                    <span className={cn("text-xl font-bold", textAccent)}>+ {sys.monthlyFee}</span>
-                    <span className={cn("text-sm font-medium", textSecondary)}>/ mes</span>
+                  <div className="flex items-baseline gap-1 mt-4 opacity-80 scale-90">
+                    <span className={cn("text-lg font-bold", textPrimary)}>+ {sys.monthlyFee}</span>
+                    <span className={cn("text-sm font-medium", textSecondary)}>/ mes (mantenimiento)</span>
                   </div>
                 </div>
 

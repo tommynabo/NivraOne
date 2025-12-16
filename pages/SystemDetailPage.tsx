@@ -85,9 +85,8 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onSc
                             </div>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row items-center gap-6 pt-4 border-t border-gray-100">
-                            <p className="text-sm text-slate-500 font-medium">Inversión Única</p>
-                            <p className="text-3xl font-bold text-slate-900">{system.price}</p>
+                        <div className="pt-6 border-t border-gray-100">
+                            {/* Price removed, just CTA */}
                         </div>
                         <GradientButton onClick={onScheduleAudit} className="w-full sm:w-auto px-8 py-4 text-lg">
                             Solicitar Este Sistema
