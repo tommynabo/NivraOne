@@ -4,29 +4,36 @@ import { Home, LayoutGrid, User, Zap } from "lucide-react"
 import { cn } from "../lib/utils"
 
 interface NavbarProps {
-    onNavigate: (page: string) => void;
+  onNavigate: (page: string) => void;
+  currentPath: string;
 }
 
-export function Navbar({ onNavigate }: NavbarProps) {
+export function Navbar({ onNavigate, currentPath }: NavbarProps) {
   const [activeTab, setActiveTab] = useState("Inicio")
   const [isMobile, setIsMobile] = useState(false)
 
   const items = [
-    { name: "Inicio", id: "home", icon: Home },
-    { name: "Sistemas", id: "systems", icon: LayoutGrid },
-    { name: "Contacto", id: "contact", icon: User },
-    { name: "Auditoría", id: "audit", icon: Zap },
+    { name: "Inicio", id: "home", path: "/", icon: Home },
+    { name: "Sistemas", id: "systems", path: "/sistemas", icon: LayoutGrid },
+    { name: "Contacto", id: "contact", path: "/contacto", icon: User },
+    { name: "Auditoría", id: "audit", path: "/auditoria", icon: Zap },
   ]
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768)
-    }
-
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
     handleResize()
     window.addEventListener("resize", handleResize)
     return () => window.removeEventListener("resize", handleResize)
   }, [])
+
+  // Update active tab based on currentPath
+  useEffect(() => {
+    const found = items.find(item => {
+      if (item.path === '/') return currentPath === '/';
+      return currentPath.startsWith(item.path);
+    });
+    if (found) setActiveTab(found.name);
+  }, [currentPath]);
 
   return (
     <div
@@ -44,6 +51,9 @@ export function Navbar({ onNavigate }: NavbarProps) {
               key={item.name}
               onClick={() => {
                 setActiveTab(item.name)
+                // Map id back to what App expects for legacy handleNavigate or just use paths if we refactor handleNavigate.
+                // App.tsx handleNavigate: if (path === 'home') navigate('/'); else navigate(`/${path}`);
+                // Let's passed the 'id' expected by App.tsx handleNavigate
                 onNavigate(item.id)
               }}
               className={cn(

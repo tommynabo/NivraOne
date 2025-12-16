@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Check, Play, Zap } from 'lucide-react';
 import { GradientButton } from '../components/GradientButton';
-import { SystemData } from '../components/Systems';
+import { SYSTEMS_DATA } from '../data/systems';
 
 interface SystemDetailPageProps {
-    system: SystemData;
+    // system prop removed, using URL param
     onBack: () => void;
     onScheduleAudit: () => void;
 }
 
-export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ system, onBack, onScheduleAudit }) => {
+export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onScheduleAudit }) => {
+    const { id } = useParams<{ id: string }>();
+
+    // Find system by ID
+    const system = useMemo(() => SYSTEMS_DATA.find(s => s.id === id), [id]);
+
+    // If not found, redirect to systems page (or show 404, but redirect is safer)
+    if (!system) {
+        return <Navigate to="/sistemas" replace />;
+    }
+
     return (
         <div className="pt-24 pb-12 bg-white min-h-screen">
-             <div className="container mx-auto px-6 md:px-12 mb-8">
+            <div className="container mx-auto px-6 md:px-12 mb-8">
                 <GradientButton variant="variant" onClick={onBack} className="min-w-0 px-4 py-2 mb-8 border-gray-300 text-slate-600 hover:bg-gray-50">
                     <ArrowLeft size={16} /> <span className="ml-2">Volver</span>
                 </GradientButton>
@@ -21,9 +32,9 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ system, onBa
                     {/* Left: Video Area */}
                     <div>
                         <div className="rounded-2xl overflow-hidden shadow-2xl bg-slate-900 aspect-video relative group border border-slate-800">
-                             <img 
-                                src={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`} 
-                                alt="Video Thumbnail" 
+                            <img
+                                src={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
+                                alt="Video Thumbnail"
                                 className="w-full h-full object-cover opacity-50"
                             />
                             <div className="absolute inset-0 flex items-center justify-center">
@@ -42,7 +53,7 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ system, onBa
                         </div>
                         <h1 className="text-4xl font-bold text-slate-900 mb-2">{system.title}</h1>
                         <h2 className="text-xl text-primary font-medium mb-6">{system.subtitle}</h2>
-                        
+
                         <p className="text-slate-700 text-lg leading-relaxed mb-8">
                             {system.longDescription || system.description}
                         </p>
