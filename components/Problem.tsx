@@ -125,14 +125,12 @@ export const Problem: React.FC = () => {
                 setActiveNodeId(id);
                 setAutoRotate(false);
 
-                // Only animate rotation on Desktop
-                if (!isMobile) {
-                    const index = timelineData.findIndex(item => item.id === id);
-                    const total = timelineData.length;
-                    const nodeBaseAngle = (index / total) * 360;
-                    let target = 270 - nodeBaseAngle;
-                    setTargetRotation(target);
-                }
+                // Animate rotation on Desktop and Mobile
+                const index = timelineData.findIndex(item => item.id === id);
+                const total = timelineData.length;
+                const nodeBaseAngle = (index / total) * 360;
+                let target = 270 - nodeBaseAngle;
+                setTargetRotation(target);
 
             } else {
                 setActiveNodeId(null);
@@ -146,9 +144,6 @@ export const Problem: React.FC = () => {
     };
 
     useEffect(() => {
-        // Disable continuous rotation loop on Mobile for performance
-        if (isMobile) return;
-
         let rotationTimer: ReturnType<typeof setInterval>;
 
         rotationTimer = setInterval(() => {
@@ -166,7 +161,7 @@ export const Problem: React.FC = () => {
         return () => {
             if (rotationTimer) clearInterval(rotationTimer);
         };
-    }, [autoRotate, targetRotation, isMobile]);
+    }, [autoRotate, targetRotation]);
 
     const calculateNodePosition = (index: number, total: number) => {
         const angle = ((index / total) * 360 + rotationAngle) % 360;
