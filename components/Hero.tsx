@@ -92,6 +92,8 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             .neon-box { 
                 border: 1px solid #00c6ff; 
                 box-shadow: 0 0 20px rgba(0, 198, 255, 0.2); 
+                min-height: 200px; /* Force height to prevent collapse */
+                z-index: 20;
             }
         }
       `}</style>
