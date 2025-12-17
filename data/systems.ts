@@ -13,24 +13,6 @@ export interface SystemData {
 
 export const SYSTEMS_DATA: SystemData[] = [
     {
-        id: 'sales-sniper',
-        title: "The Sales Sniper",
-        subtitle: "Cualificación & Research",
-        description: "Este sistema elimina la improvisación de tu proceso comercial.",
-        longDescription: "Este sistema elimina la improvisación de tu proceso comercial. Fusionamos Meeting Prep Monster con un generador de propuestas visuales. Antes de que entres al Zoom, la IA ya ha escaneado la huella digital de tu prospecto, ha encontrado sus puntos débiles y ha redactado las preguntas exactas para cerrar la venta. Además, genera un borrador de tu presentación comercial adaptado al cliente. Tú te centras en conectar y cerrar; el sistema se encarga de la inteligencia y la documentación.",
-        detailHeadline: "No vuelvas a entrar a una reunión a ciegas.",
-        price: "1.000€",
-        monthlyFee: "200€",
-        videoId: 20,
-        features: [
-            "Investigación Profunda (Web + LinkedIn)",
-            "Detección de Dolores y Ocultos",
-            "Generación de Informes de Preparación",
-            "Creación Automática de Presentación (Slides)",
-            "Sincronización CRM sin tocar teclas"
-        ]
-    },
-    {
         id: 'content-engine',
         title: "The Content Engine",
         subtitle: "Omnicanalidad Automática",
@@ -49,13 +31,31 @@ export const SYSTEMS_DATA: SystemData[] = [
         ]
     },
     {
+        id: 'sales-sniper',
+        title: "The Sales Sniper",
+        subtitle: "Cualificación & Research",
+        description: "Este sistema elimina la improvisación de tu proceso comercial.",
+        longDescription: "Este sistema elimina la improvisación de tu proceso comercial. Fusionamos Meeting Prep Monster con un generador de propuestas visuales. Antes de que entres al Zoom, la IA ya ha escaneado la huella digital de tu prospecto, ha encontrado sus puntos débiles y ha redactado las preguntas exactas para cerrar la venta. Además, genera un borrador de tu presentación comercial adaptado al cliente. Tú te centras en conectar y cerrar; el sistema se encarga de la inteligencia y la documentación.",
+        detailHeadline: "No vuelvas a entrar a una reunión a ciegas.",
+        price: "1.000€",
+        monthlyFee: "200€",
+        videoId: 20,
+        features: [
+            "Investigación Profunda (Web + LinkedIn)",
+            "Detección de Dolores y Ocultos",
+            "Generación de Informes de Preparación",
+            "Creación Automática de Presentación (Slides)",
+            "Sincronización CRM sin tocar teclas"
+        ]
+    },
+    {
         id: 'custom-architecture',
         title: "Arquitectura a Medida",
         subtitle: "Operaciones & Escala",
         description: "Diseño flujos de ingeniería específicos para resolver cuellos de botella operativos.",
         longDescription: "Para negocios que han superado la fase estándar y tienen dolores de crecimiento únicos. Diseño flujos de ingeniería específicos para resolver cuellos de botella operativos: desde la gestión automática de facturas y contratos, hasta la coordinación de equipos o logística. Analizamos tu proceso paso a paso, lo limpiamos de ineficiencias y construimos un \"Sistema de Sombra\" en n8n que trabaja 24/7 sin errores humanos.",
         detailHeadline: "Si es repetitivo, debe morir.",
-        price: "Desde 2.500€",
+        price: "Desde 1.500€",
         monthlyFee: "A consultar",
         videoId: 30,
         features: [

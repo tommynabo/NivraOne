@@ -52,7 +52,7 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
         {systems.map((sys, index) => {
-          const isPopular = index === 0;
+          const isPopular = index === 1;
           const isLanding = variant === "landing";
 
           // Card Classes - Enforcing White Background style for 'page' variant as requested by "Restore content"
