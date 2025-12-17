@@ -54,6 +54,10 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onSc
                         <h1 className="text-4xl font-bold text-slate-900 mb-2">{system.title}</h1>
                         <h2 className="text-xl text-primary font-medium mb-6">{system.subtitle}</h2>
 
+                        {system.detailHeadline && (
+                            <h3 className="text-2xl font-bold text-slate-900 mb-4">{system.detailHeadline}</h3>
+                        )}
+
                         <p className="text-slate-700 text-lg leading-relaxed mb-8">
                             {system.longDescription || system.description}
                         </p>

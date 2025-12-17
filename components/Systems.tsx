@@ -52,7 +52,7 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
         {systems.map((sys, index) => {
-          const isPopular = index === 1;
+          const isPopular = index === 0;
           const isLanding = variant === "landing";
 
           // Card Classes - Enforcing White Background style for 'page' variant as requested by "Restore content"
@@ -72,8 +72,8 @@ export const Systems: React.FC<SystemsProps> = ({ systems, onViewSystem, variant
           const textPrimary = isLanding ? "text-white" : "text-slate-900";
           const textSecondary = isLanding ? "text-blue-100" : "text-slate-500";
           const textAccent = isLanding ? "text-blue-200" : "text-primary";
-          const iconColor = isLanding ? "text-blue-200" : "text-green-600";
-          const iconBg = isLanding ? "bg-white/10" : "bg-green-100";
+          const iconColor = isLanding ? "text-blue-200" : "text-primary";
+          const iconBg = isLanding ? "bg-white/10" : "bg-blue-50";
 
           const landingBackgroundStyle = isLanding ? {
             background: isPopular
