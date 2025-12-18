@@ -1,4 +1,3 @@
-```
 import React, { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -76,17 +75,16 @@ export const DriveVideoPlayer: React.FC<DriveVideoPlayerProps> = ({
             {shouldRenderIframe && (
                 <iframe
                     src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=1`}
-className = {
-    cn(
-                        "absolute inset-0 w-full h-full border-0 transition-opacity duration-500",
-        isPlaying? "z-20 opacity-100" : "z-0 opacity-0"
-    )
-}
-allow = "autoplay; fullscreen"
-title = "Video Player"
-    ></iframe >
+                    className={
+                        cn(
+                            "absolute inset-0 w-full h-full border-0 transition-opacity duration-500",
+                            isPlaying ? "z-20 opacity-100" : "z-0 opacity-0"
+                        )
+                    }
+                    allow="autoplay; fullscreen"
+                    title="Video Player"
+                ></iframe >
             )}
         </div >
     );
 };
-```
