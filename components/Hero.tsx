@@ -104,21 +104,21 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           {/* Left Column: Copy */}
           <div className="flex flex-col space-y-6 md:space-y-8 max-w-2xl pt-4 md:pt-0 items-center text-center mx-auto lg:mx-0 lg:text-left lg:items-start">
 
-            <h1 className="text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight text-center lg:text-left flex flex-col items-center lg:items-start">
-              <div className="inline-block relative mb-2 scale-105 md:scale-110 xl:scale-125 origin-center lg:origin-left z-10">
-                <span className="shine-text drop-shadow-sm font-black text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="text-3xl md:text-4xl lg:text-3xl xl:text-5xl font-extrabold text-slate-900 leading-[1.15] tracking-tight text-center lg:text-left flex flex-col items-center lg:items-start">
+              <div className="inline-block relative mb-2 scale-105 md:scale-110 lg:scale-100 xl:scale-125 origin-center lg:origin-left z-10">
+                <span className="shine-text drop-shadow-sm font-black text-4xl md:text-5xl lg:text-5xl xl:text-7xl">
                   Sistematizando
                 </span>
                 <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary opacity-20" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
                 </svg>
               </div>{' '}
-              <span className="block mt-2 whitespace-nowrap text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+              <span className="block mt-2 whitespace-nowrap text-2xl md:text-3xl lg:text-3xl xl:text-5xl">
                 tu operativa con Ingeniería de IA
               </span>
             </h1>
 
-            <p className="text-base md:text-lg xl:text-xl text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="text-base md:text-lg lg:text-base xl:text-xl text-slate-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
               No implemento 'chatbots'. Diseño e instalo Sistemas de Trabajo Autónomos para Consultores y Expertos que quieren escalar sin contratar más personal.
             </p>
 
@@ -137,7 +137,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           <div className="relative group perspective-1000 mt-8 lg:mt-0 flex justify-center lg:justify-end">
 
             {/* The Container with Neon Snake Border - REMOVED hover:scale to fix jitter/displacement */}
-            <div className="relative w-full max-w-[450px] lg:max-w-[480px] xl:max-w-[550px] aspect-video rounded-xl shadow-2xl bg-slate-900 neon-box">
+            <div className="relative w-full max-w-[450px] lg:max-w-[400px] xl:max-w-[550px] aspect-video rounded-xl shadow-2xl bg-slate-900 neon-box">
 
               {/* The 4 Spans for the Snake Animation */}
               <span></span>
