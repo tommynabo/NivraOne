@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+```
+import React, { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -6,26 +7,40 @@ interface DriveVideoPlayerProps {
     videoId: string;
     thumbnailUrl?: string;
     className?: string;
+    preloadStrategy?: 'hover' | 'immediate';
 }
 
 export const DriveVideoPlayer: React.FC<DriveVideoPlayerProps> = ({
     videoId,
     thumbnailUrl,
-    className
+    className,
+    preloadStrategy = 'hover'
 }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [forcePreload, setForcePreload] = useState(false);
 
     // If no thumbnail provided, use specific placeholder logic or default
     // For VSL: /vsl-thumbnail.png
     // For others: picsum or passed prop
     const finalThumbnail = thumbnailUrl || "/vsl-thumbnail.png";
 
+    useEffect(() => {
+        if (preloadStrategy === 'immediate') {
+            const timer = setTimeout(() => {
+                setForcePreload(true);
+            }, 1000); // 1-second delay to prioritize initial page paint
+            return () => clearTimeout(timer);
+        }
+    }, [preloadStrategy]);
+
     const handleMouseEnter = () => {
         if (!isPlaying) {
             setIsHovered(true);
         }
     };
+
+    const shouldRenderIframe = isPlaying || isHovered || forcePreload;
 
     return (
         <div
@@ -57,18 +72,21 @@ export const DriveVideoPlayer: React.FC<DriveVideoPlayerProps> = ({
                 </div>
             </div>
 
-            {/* Video Iframe (Preloaded on hover, revealed on click) */}
-            {(isHovered || isPlaying) && (
+            {/* Video Iframe (Preloaded on hover/immediate, revealed on click) */}
+            {shouldRenderIframe && (
                 <iframe
                     src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=1`}
-                    className={cn(
+className = {
+    cn(
                         "absolute inset-0 w-full h-full border-0 transition-opacity duration-500",
-                        isPlaying ? "z-20 opacity-100" : "z-0 opacity-0"
-                    )}
-                    allow="autoplay; fullscreen"
-                    title="Video Player"
-                ></iframe>
+        isPlaying? "z-20 opacity-100" : "z-0 opacity-0"
+    )
+}
+allow = "autoplay; fullscreen"
+title = "Video Player"
+    ></iframe >
             )}
-        </div>
+        </div >
     );
 };
+```
