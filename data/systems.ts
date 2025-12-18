@@ -23,7 +23,7 @@ export const SYSTEMS_DATA: SystemData[] = [
         price: "1.000€",
         monthlyFee: "200€",
         videoId: 10,
-        videoDriveId: "1Y5Ekl10Wg_jVLmCSo__DHT3oz8dNikKY",
+        videoDriveId: "1HqM9h7RMo2ZyXBvH7J2ryiCc0ZMxOipW",
         features: [
             "De YouTube/Audio a 10 piezas de texto",
             "Sistema \"Parasite\" (Análisis de Tendencias)",
@@ -42,7 +42,7 @@ export const SYSTEMS_DATA: SystemData[] = [
         price: "1.000€",
         monthlyFee: "200€",
         videoId: 20,
-        videoDriveId: "1_judwVbom24UQlRn7_PoyBRzuCf15Zjm",
+        videoDriveId: "1cOaEWTiqqHaLHx4RKux_XuehRlScZQSX",
         features: [
             "Investigación Profunda (Web + LinkedIn)",
             "Detección de Dolores y Ocultos",
