@@ -8,6 +8,7 @@ export interface SystemData {
     price: string;
     monthlyFee: string;
     videoId: number;
+    videoDriveId?: string;
     features: string[];
 }
 
@@ -40,6 +41,7 @@ export const SYSTEMS_DATA: SystemData[] = [
         price: "1.000€",
         monthlyFee: "200€",
         videoId: 20,
+        videoDriveId: "1_judwVbom24UQlRn7_PoyBRzuCf15Zjm",
         features: [
             "Investigación Profunda (Web + LinkedIn)",
             "Detección de Dolores y Ocultos",

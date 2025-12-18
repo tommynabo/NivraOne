@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, Check, Play, Zap } from 'lucide-react';
 import { GradientButton } from '../components/GradientButton';
+import { DriveVideoPlayer } from '../components/DriveVideoPlayer';
 import { SYSTEMS_DATA } from '../data/systems';
 
 interface SystemDetailPageProps {
@@ -32,16 +33,25 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onSc
                     {/* Left: Video Area */}
                     <div>
                         <div className="rounded-2xl overflow-hidden shadow-2xl bg-slate-900 aspect-video relative group border border-slate-800">
-                            <img
-                                src={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
-                                alt="Video Thumbnail"
-                                className="w-full h-full object-cover opacity-50"
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <button className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                                    <Play className="fill-white text-white ml-2" size={32} />
-                                </button>
-                            </div>
+                            {system.videoDriveId ? (
+                                <DriveVideoPlayer
+                                    videoId={system.videoDriveId}
+                                    thumbnailUrl={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
+                                />
+                            ) : (
+                                <>
+                                    <img
+                                        src={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
+                                        alt="Video Thumbnail"
+                                        className="w-full h-full object-cover opacity-50"
+                                    />
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <button className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                                            <Play className="fill-white text-white ml-2" size={32} />
+                                        </button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                         <p className="text-center text-sm text-slate-500 mt-4">Demo detallada de 5 minutos</p>
                     </div>

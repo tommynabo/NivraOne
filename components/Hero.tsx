@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { GradientButton } from './GradientButton';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { TextShimmer } from './TextShimmer';
+import { DriveVideoPlayer } from './DriveVideoPlayer';
 
 interface HeroProps {
   onNavigate: (page: string) => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
-  const [playVideo, setPlayVideo] = useState(false);
 
   return (
     <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
@@ -147,39 +147,10 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
               {/* Inner Content Container (Video) */}
               <div className="absolute inset-[3px] bg-slate-900 rounded-lg overflow-hidden z-10">
-                {!playVideo ? (
-                  <div
-                    className="w-full h-full relative cursor-pointer group"
-                    onClick={() => setPlayVideo(true)}
-                  >
-                    {/* 
-                            !!! IMPORTANTE !!!
-                            Thumbnail updated locally.
-                        */}
-                    <img
-                      src="/vsl-thumbnail.png"
-                      alt="Consultoría VSL Thumbnail"
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-
-                    {/* Centered Play Button */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-primary/50 rounded-full blur-xl animate-pulse"></div>
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm border border-white/50 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl">
-                          <Play className="w-8 h-8 text-white fill-white ml-1" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <iframe
-                    src="https://drive.google.com/file/d/1nc5LNttft1UqcBNWv3JlHYabS9qJdkG2/preview"
-                    className="w-full h-full"
-                    allow="autoplay; fullscreen"
-                    title="VSL NivraOne"
-                  ></iframe>
-                )}
+                <DriveVideoPlayer
+                  videoId="1nc5LNttft1UqcBNWv3JlHYabS9qJdkG2"
+                  thumbnailUrl="/vsl-thumbnail.png"
+                />
               </div>
 
             </div>
