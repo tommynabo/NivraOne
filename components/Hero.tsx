@@ -148,7 +148,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
               {/* Inner Content Container (Video) */}
               <div className="absolute inset-[3px] bg-slate-900 rounded-lg overflow-hidden z-10">
                 <DriveVideoPlayer
-                  videoId="1nc5LNttft1UqcBNWv3JlHYabS9qJdkG2"
+                  videoId="1PnkUnVrhD-vAiddFSIji6Kf3g-Opvqlz"
                   thumbnailUrl="/vsl-thumbnail.png"
                   preloadStrategy="immediate"
                 />
