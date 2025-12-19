@@ -74,7 +74,7 @@ export const DriveVideoPlayer: React.FC<DriveVideoPlayerProps> = ({
             {/* Video Iframe (Preloaded on hover/immediate, revealed on click) */}
             {shouldRenderIframe && (
                 <iframe
-                    src={`https://drive.google.com/file/d/${videoId}/preview?autoplay=1`}
+                    src={`https://drive.google.com/file/d/${videoId}/preview`}
                     className={
                         cn(
                             "absolute inset-0 w-full h-full border-0 transition-opacity duration-500",
