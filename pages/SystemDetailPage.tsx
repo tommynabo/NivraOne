@@ -36,12 +36,12 @@ export const SystemDetailPage: React.FC<SystemDetailPageProps> = ({ onBack, onSc
                             {system.videoDriveId ? (
                                 <DriveVideoPlayer
                                     videoId={system.videoDriveId}
-                                    thumbnailUrl={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
+                                    thumbnailUrl={system.thumbnail}
                                 />
                             ) : (
                                 <>
                                     <img
-                                        src={`https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
+                                        src={system.thumbnail || `https://picsum.photos/1200/800?random=${system.videoId}&grayscale`}
                                         alt="Video Thumbnail"
                                         className="w-full h-full object-cover opacity-50"
                                     />

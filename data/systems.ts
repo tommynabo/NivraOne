@@ -9,6 +9,7 @@ export interface SystemData {
     monthlyFee: string;
     videoId: number;
     videoDriveId?: string;
+    thumbnail?: string;
     features: string[];
 }
 
@@ -24,6 +25,7 @@ export const SYSTEMS_DATA: SystemData[] = [
         monthlyFee: "200€",
         videoId: 10,
         videoDriveId: "1HqM9h7RMo2ZyXBvH7J2ryiCc0ZMxOipW",
+        thumbnail: "/images/thumbnail-content-engine.png",
         features: [
             "De YouTube/Audio a 10 piezas de texto",
             "Sistema \"Parasite\" (Análisis de Tendencias)",
@@ -43,6 +45,7 @@ export const SYSTEMS_DATA: SystemData[] = [
         monthlyFee: "200€",
         videoId: 20,
         videoDriveId: "1cOaEWTiqqHaLHx4RKux_XuehRlScZQSX",
+        thumbnail: "/images/thumbnail-sales-sniper.png",
         features: [
             "Investigación Profunda (Web + LinkedIn)",
             "Detección de Dolores y Ocultos",
@@ -62,6 +65,7 @@ export const SYSTEMS_DATA: SystemData[] = [
         monthlyFee: "A consultar",
         videoId: 30,
         videoDriveId: "10ne98g_SJf6ECvqKC2efVW9pN3EZRDiu",
+        thumbnail: "/images/thumbnail-custom-architecture.png",
         features: [
             "Automatización de Procesos Internos",
             "Onboarding Complejo & Legal",

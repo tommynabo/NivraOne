@@ -81,7 +81,8 @@ export const DriveVideoPlayer: React.FC<DriveVideoPlayerProps> = ({
                             isPlaying ? "z-20 opacity-100" : "z-0 opacity-0"
                         )
                     }
-                    allow="autoplay; fullscreen"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
                     title="Video Player"
                 ></iframe >
             )}
